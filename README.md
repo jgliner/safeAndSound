@@ -10,4 +10,5 @@ A cooperative game made in JS, based on Keep Talking and Nobody Explodes
 ##### Todo
 * Menus
 * Display fixes for mobile
+* Loading screen
 * Landing page
