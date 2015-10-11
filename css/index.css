@@ -1,0 +1,925 @@
+*{
+	margin: 0;
+}
+
+/*FONTS*/
+
+@font-face {
+    font-family: "Digital Dream";
+    src: local(DIGITALDREAM), url('../fonts/DIGITALDREAM.ttf') format('opentype');
+}
+@font-face {
+    font-family: "CustomGlyphs";
+    src: local(glyph), url('../fonts/glyph.ttf') format('opentype');
+}
+@font-face {
+    font-family: "Pixel";
+    src: local(Minecraft), url('../fonts/minecraft.ttf') format('opentype');
+}
+
+/*GENERAL BODY*/
+
+html, body {
+	height: 100%;
+}
+
+body {
+	background: url(../images/bg.jpg) no-repeat;
+	background-color: #808080;
+	background-size: 100vw 100vh;
+	overflow: hidden !important;
+	font-family: "Minecraft";
+	letter-spacing: 1.5px;
+}
+
+button {
+	outline: none;
+	border: 3px solid #808080 !important;
+}
+button:active {
+	outline: none;
+	border: 3px inset #bbbbbb !important;
+}
+
+.strikes {
+	display: none;
+}
+
+.strikebuzzer {
+	color: red;
+	display: none;
+	position: absolute;
+	left: 45%;
+	font-size: 300px;
+	z-index: 9999999;
+}
+
+.blinker {
+	animation: blink 0.5s infinite;
+}
+@keyframes blink { 
+	0% { opacity: 1}
+	50% {opacity: 0}
+}
+
+/*SCENERY*/
+
+#siren {
+	position: absolute;
+	top: -7vh;
+}
+#sign {
+	position: absolute;
+	left: 80vw;
+	top: 100px;
+	width: 15vw;
+}
+#pipe1 {
+	position: absolute;
+	left: 28vw;
+}
+#pipe2 {
+	position: absolute;
+	left: 45vw;
+}
+
+/*SAFE SHAPE*/
+
+.safe {
+	position: absolute;
+	left: 50%;
+	bottom: 0;
+	width: 82vw;
+	height: auto;
+	transform: translate(-50%, 0%);
+}
+#safeimg {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+
+.bomb {
+	position: absolute;
+	left: 50.5%;
+	top: 52.6%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	height: 69%;
+	z-index: 99999999999;
+}
+
+/*SAFE COMPONENTS*/
+
+#topwrap {
+	position: absolute;
+	width: 79.5%;
+	height: 10%;
+	top: 4.7%;
+	left: 8%;
+	transform: skewX(17deg);
+}
+
+#idwrap {
+	position: relative;
+	background: url(../images/indicatorPlaque2.png) no-repeat center/100% 100%;
+	text-align: center;
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+#mainTimerWrap {
+	position: relative;
+	background: url(../images/indicatorPlaque2.png) no-repeat center/100% 100%;
+	width: 50%;
+	height: 100%;
+	float: right;
+}
+
+#mainTimer {
+	position: relative;
+	font-size: 3.5vw;
+	width: 80%;
+	height: 66%;
+	left: 10%;
+	top: 45%;
+	background-color: black;
+	color: red;
+	transform: translate(0%, -50%);
+	text-align: center;
+}
+#identifiers {
+	position: relative;
+	top: 6%;
+	font-size: 1.9vw;
+	transform: skewX(-15deg);
+}
+#bombname {
+	font-weight: bold;
+	color: #505050;
+}
+
+#edition {
+
+}
+
+/*MODULES (GENERAL)*/
+
+#mod0 {
+	position: relative;
+	height: 47%;
+	width: 47.5%;
+}
+#mod1 {
+	position: relative;
+	height: 47%;
+	width: 48.5%;
+	left: 2.35vw;
+}
+#mod2 {
+	position: relative;
+	height: 47%;
+	width: 47.5%;
+	top: 2.3vh;
+}
+#mod3 {
+	position: relative;
+	height: 47%;
+	width: 48.5%;
+	left: 2.35vw;
+	top: 2.3vh;
+}
+
+.mod {
+	height: 50%;
+	width: 50%;
+	padding: 0 !important;
+}
+
+/*THREE DIGIT INDICATOR*/
+
+#indicator {
+	background: url(../images/indicatorPlaque.png) no-repeat center/contain;
+	width: 15%;
+	height: 5%;
+	position: absolute;
+	top: 49%;
+	left: -1.9%;
+	text-align: center;
+	transform: rotate(270deg) skewX(-20deg);
+	display: inline-block;
+}
+#bottomLED {
+	position: relative;
+	border: 1px solid #C70303;
+	background-color: red;
+	border-radius: 50%;
+	top: 30%;
+	left: 20%;
+	padding: 0;
+	float: left;
+	height: 1.2vw;
+	width: 1.2vw;
+}
+#indicatorCode {
+	position: relative;
+	left: 25%;
+	top: 20%;
+	font-size: 1.8vw;
+	float: left;
+}
+
+/*OUTLET*/
+
+#outletWrap {
+	position: absolute;
+	height: 12.5vw;
+	width: 7.5vw;
+	background: url(../images/button.png) no-repeat center/cover;
+	border: 4px solid #808080;
+	left: 80vw;
+	top: 80%;
+}
+
+/*-----------OUTLET TYPES-------------*/
+
+/*USA*/
+#usa {
+    position: relative;
+    left: 4%;
+    top: 18%;
+    width: 90%;
+    height: 65%;
+    background: url(../images/outlets/us.png) no-repeat center/contain;
+}
+
+/*UK*/
+
+#uk .prong1 {
+	position: absolute;
+	top: 40%;
+	left: 50%;
+	border: 5px solid black;
+	border-left: 4px;
+	transform: translate(-50%, -50%);
+}
+#uk .prong2 {
+	position: absolute;
+	top: 55%;
+	left: 30%;
+	border: 5px solid black;
+	border-bottom: 4px;
+	transform: translate(-50%, -50%);
+}
+#uk .prong3 {
+	position: absolute;
+	top: 55%;
+	left: 70%;
+	border: 5px solid black;
+	border-bottom: 4px;
+	transform: translate(-50%, -50%);
+}
+
+/*GER*/
+
+#ger {
+	position: relative;
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
+	top: 50%;
+	left: 50%;
+	border: 2px solid #444;
+	transform: translate(-50%, -50%);
+}
+
+#ger .prong1 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	border: 5px groove #555;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#ger .prong2 {
+	position: absolute;
+	top: 50%;
+	left: 18%;
+	border: 5px solid black;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+}
+#ger .prong3 {
+	position: absolute;
+	top: 50%;
+	left: 83%;
+	border: 5px solid black;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/*IND*/
+
+#ind {
+	position: relative;
+	height: 30px;
+	width: 60px;
+	top: 50%;
+	left: 50%;
+	border: 2px solid #444;
+	transform: translate(-50%, -50%);
+}
+
+#ind .prong1 {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	border: 5px solid black;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+}
+
+#ind .prong2 {
+	position: absolute;
+	top: 50%;
+	left: 18%;
+	border: 5px solid black;
+	transform: translate(-50%, -50%);
+	border-radius: 50%;
+}
+#ind .prong3 {
+	position: absolute;
+	top: 50%;
+	left: 83%;
+	border: 5px solid black;
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+}
+
+/*AUS*/
+#aus {
+    position: relative;
+    left: 4%;
+    top: 18%;
+    width: 90%;
+    height: 65%;
+    background: url(../images/outlets/aus.png) no-repeat center/contain;
+}
+
+/*ISR*/
+
+#isr {
+	position: relative;
+	height: 60px;
+	width: 60px;
+	border-radius: 50%;
+	top: 50%;
+	left: 50%;
+	border: 2px solid #444;
+	transform: translate(-50%, -50%);
+}
+#isr:after {
+	position: absolute;
+	content: '';
+	border: 4px groove #444;
+	border-radius: 50%;
+	height: 5px;
+	width: 5px;
+	bottom: 25px;
+	left: 24px;
+}
+
+
+#isr .prong1 {
+	position: absolute;
+	top: 75%;
+	left: 50%;
+	border: 5px solid black;
+	border-left: 4px;
+	transform: translate(-50%, -50%);
+}
+#isr .prong2 {
+	position: absolute;
+	top: 50%;
+	left: 18%;
+	border: 5px solid black;
+	border-bottom: 4px;
+	-webkit-transform: rotate(45deg) translate(-50%, -50%);
+	-moz-transform: rotate(45deg) translate(-50%, -50%);
+	-ms-transform: rotate(45deg) translate(-50%, -50%);
+	-o-transform: rotate(45deg) translate(-50%, -50%);
+	transform: rotate(45deg) translate(-50%, -50%);
+}
+#isr .prong3 {
+	position: absolute;
+	top: 38%;
+	left: 76%;
+	border: 5px solid black;
+	border-bottom: 4px;
+	-webkit-transform: rotate(-45deg) translate(-50%, -50%);
+	-moz-transform: rotate(-45deg) translate(-50%, -50%);
+	-ms-transform: rotate(-45deg) translate(-50%, -50%);
+	-o-transform: rotate(-45deg) translate(-50%, -50%);
+	transform: rotate(-45deg) translate(-50%, -50%);
+}
+#isr .prong1:after {
+	position: absolute;
+	content: '';
+	border: 4px solid black;
+	border-radius: 50%;
+	height: 5px;
+	width: 5px;
+	bottom: -4px;
+	left: -1.91px;
+}
+#isr .prong3:after, #isr .prong2:after {
+	position: absolute;
+	content: '';
+	border: 4px solid black;
+	border-radius: 50%;
+	height: 5px;
+	width: 5px;
+	bottom: -2px;
+	left: -4px;
+}
+
+.comfirm:focus {
+	text-decoration: none;
+	border: none;
+	outline: none;
+}
+
+/*KEYPAD*/
+
+.keypad {
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+
+.kbutton {
+	height: 28%;
+	width: 25%;
+	font-family: "CustomGlyphs" !important;
+	position: absolute;
+	text-align: center;
+	font-size: 3vw;
+	background: url(../images/button.png) no-repeat center/100% 100%;
+	white-space: normal;
+	transform: translate(-50%, -50%);
+}
+
+#button0 {
+	left: 30%;
+	top: 30%;
+}
+#button1 {
+	left: 72%;
+	top: 30%;
+}
+#button2 {
+	left: 30%;
+	top: 70%;
+}
+#button3 {
+	left: 72%;
+	top: 70%;
+}
+
+.correctKeypad:before {
+	content: '';
+    background-color: #00ff00;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+}
+
+/*COMPLEX WIRES*/
+
+.wires {
+	position: relative;
+	height: 100%;
+	width: 100%;
+}
+.wireWrap {
+	position: relative;
+	height: 80%;
+	width: 80%;
+	left: 10%;
+	top: 0;
+}
+
+.wireDocks, .simpleWireDocks {
+	position: absolute;
+}
+.confirm {
+	width: 2.5vw;
+	height: 2.5vw;
+	background: url(../images/button.png) no-repeat center/cover;
+	left: 99%;
+	top: 16.5%;
+	transform: translate(-50%, -50%);
+	z-index: 99999999
+
+}
+.confirm:before {
+	content: '';
+    background-color: red;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+}
+
+.dock0 {
+	height: 100%;
+	width: 2%;
+	left: 10%;
+	top: 20%;
+	background-color: #606060;
+}
+.delta {
+	height: 100%;
+	width: 15%;
+	left: -5%;
+	top: 20%;
+	background: url(../images/button.png) no-repeat center/cover;
+	border: 5px dashed #909090;
+}
+.dock1 {
+	height: 100%;
+	width: 2%;
+	left: 90%;
+	top: 20%;
+	background-color: #606060;
+}
+.led {
+	height: 100%;
+	width: 15%;
+	left: 92%;
+	top: 20%;
+	background: url(../images/button.png) no-repeat center/cover;
+	border: 5px dashed #909090;
+}
+
+.indivWireCont {
+	position: absolute;
+	height: 87%;
+	width: 80%;
+	top: 29%;
+	left: 11%;
+}
+.indivWires {
+	position: absolute;
+	height: 10px;
+	width: 100%;
+	z-index: 1000;
+	border: none !important;
+	padding: 0;
+	line-height: 2px;
+}
+.wireSpacing {
+	width: 100%;
+	height: 17%;
+	position: relative;
+}
+
+.deltaOnOff {
+	position: absolute;
+	width: 20%;
+	height: 100%;
+	left: -20%;
+	font-size: 125%;
+}
+.ledOnOff {
+	position: absolute;
+	left: 108%;
+	display: inline-block;
+	border: 1px solid #C70303;
+	border-radius: 50%;
+	height: 10px;
+	width: 10px;
+	top: -1%;
+}
+
+.deltaOn .deltaOnOff {
+	color: #fff;
+}
+.deltaOff .deltaOnOff {
+	display: none;
+}
+.ledOn .ledOnOff {
+	background-color: #FF0000;
+}
+.ledOff .ledOnOff {
+	background-color: #8B0101;
+}
+
+.cut::after {
+	position: relative;
+	content: "|||||||||||||||";
+	letter-spacing: -2px;
+	left: 40%;
+	top: -1.5px;
+	color: #4F2929;
+}
+
+/*SIMPLE WIRES*/
+
+.simpleWireWrap {
+	position: absolute;
+	height: 90%;
+	width: 100%;
+	bottom: 15%;
+
+}
+
+.indivWireContS {
+	position: absolute;
+	height: 74%;
+	width: 100%;
+	top: 27%;
+	text-align: center;
+}
+.indivWiresS {
+	position: relative;
+	display: inline-block;
+	height: 100%;
+	width: 8px;
+	z-index: 1000;
+	border: none !important;
+	padding: 0;
+	line-height: 2px;
+	margin-right: 10%;
+	margin-left: auto;
+}
+.indivWiresS:last-child {
+	margin-right: 0%;
+}
+.indivWiresS:before, .indivWiresS:after {
+	content: '';
+	height: 7px;
+	width: 20px;
+	background: url(../images/indicatorPlaque.png) no-repeat center/cover;
+	position: absolute;
+	bottom: 100%;
+	right: -6px;
+}
+.indivWiresS:after {
+	bottom: 0;
+	top: 100%;
+}
+
+/*PANIC MODULE*/
+
+.panic {
+	height: 100%;
+	width: 100%;
+}
+
+.panicModule {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border: 5px solid green;
+	display: none;
+}
+
+.panicOff {
+  background: none !important;
+}
+
+.on {
+  animation: on 1s infinite;
+}
+
+@keyframes on { 
+	0% { background-color: #808080 }
+	50% { background-color: #999 }
+	100% { background-color: #808080 }
+}
+
+.panicTimerBox {
+	position: absolute;
+	top: 5%;
+	left: 10%;
+	height: 28%;
+	width: 17%;
+	background-color: black;
+	text-align: center;
+}
+.panicTimer {
+	position: relative;
+	text-align: center;
+	top: 20%;
+	color: red;
+	font-size: 3vw;
+}
+.panicBar {
+	position: absolute;
+	top: 11%;
+	left: 27%;
+	width: 65%;
+	height: 15%;
+	background-color: #D21414;
+	border: 3px solid #EB0808;
+}
+.buttontimer {
+	position: absolute;
+	width: 12%;
+	height: 15%;
+	background: url(../images/button.png) no-repeat center/cover;
+	text-align: center !important;
+	top: 81%;
+	left: 55%;
+}
+.buttontimer:before {
+	content: '';
+    background-color: red;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+}
+
+.commandBox {
+	position: absolute;
+	background-color: black;
+	width: 82%;
+	height: 30%;
+	top: 35%;
+	left: 10%;
+}
+
+.commandText {
+	position: absolute;
+	width: 90%;
+	height: 88%;
+	text-align: center;
+	top: 10%;
+	left: 5%;
+	color: red;
+	font-size: 2.15vw;
+	text-transform: uppercase;
+}
+
+.ui-slider {
+	position: absolute !important;
+	width: 82%;
+	height: 20%;
+	top: 70%;
+	left: 10%;
+	background: black !important;
+	color: black !important;
+	border: none !important;
+}
+.ui-widget-header {
+	background: #444 !important;
+}
+.ui-slider-handle {
+	background: url(../images/button.png) no-repeat center/100% 100% !important;
+	border: 3px solid #6F6F6F !important;
+	outline: none !important;
+}
+.ui-slider-handle:active {
+	border: 3px groove #6F6F6F !important;
+}
+
+
+.val {
+	position: absolute;
+	width: 12% !important;
+	height: 15%;
+	color: red;
+	background: black;
+	border: none;
+	text-align: center !important;
+	vertical-align: middle;
+	top: 81%;
+	left: 35%;
+	font-size: 2.4vw;
+}
+
+/*LAUNCHPAD MODULE*/
+
+.launchpad {
+	position: absolute;
+	height: 80%;
+	width: 80%;
+	left: 10%;
+	top: 10%;
+}
+
+.lbutton, .lbuttonOn {
+	height: 25%;
+	position: relative;
+	background: url(../images/button.png) no-repeat center/100% 100%;
+	-webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    border: 3px outset buttonface !important;
+}
+
+.blink:before {
+	content: '';
+	animation: pulse 0.5s infinite;
+}
+
+@keyframes pulse { 
+	50% { background-color: grey; }
+}
+
+.R:before {
+    content: '';
+    background-color: red;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+.B:before {
+	content: '';
+    background-color: blue;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+.Y:before {
+	content: '';
+    background-color: yellow;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.8;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+.G:before {
+	content: '';
+    background-color: #00ff00;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.5;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+.W:before {
+	content: '';
+    background-color: white;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0.1;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+.W {
+	-webkit-filter: brightness(1.5);
+  	filter: brightness(1.5);
+  	-webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    -ms-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}

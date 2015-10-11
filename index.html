@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://getbootstrap.com/favicon.ico">
+
+    <title>BOOM!!!</title>
+
+    <link href="./css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
+  </head>
+
+  <body>
+
+    <div class="container-fluid">
+
+        <img src="./images/siren.png" id="siren">
+        <img src="./images/pipe.png" id="pipe1">
+        <img src="./images/pipe.png" id="pipe2">
+        <img src="./images/explosionsign.png" id="sign">
+
+        <h1 class="strikes">STRIKES: 0</h1>
+        <h1 class="strikebuzzer">X</h1>
+
+        <div class="safe">
+            <img src="./images/safe.png" id="safeimg">
+            <div id="topwrap">
+                <div id="mainTimerWrap">
+                    <div id="mainTimer">INACTIVE</div>
+                </div>
+                <div id="idwrap">
+                    <div id="identifiers">
+                        <u id ="bombname">COMMANDO 8&#8482; SERIES</u>
+                        <div id ="serial"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="bomb">
+                <div id='mod0' class='col-xs-6 mod'>
+                    <div id='led0'></div>
+                </div>
+                <div id='mod1' class='col-xs-6 mod'>
+                    <div id='led1'></div>
+                </div>
+                <div id='mod2' class='col-xs-6 mod'>
+                    <div id='led2'></div>
+                </div>
+                <div id='mod3' class='col-xs-6 mod'>
+                    <div id='led3'></div>
+                </div>
+            </div>
+            <div id="indicator">
+                <div id="bottomLED"></div>
+                <div id="indicatorCode"></div>
+            </div>
+            <!--<div id ="edition"></div>-->
+            <div id="outletWrap">
+                <div class="outlet">
+                    <div class="prong1"></div>
+                    <div class="prong2"></div>
+                    <div class="prong3"></div>
+                </div>
+            </div>
+        </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="./js/lib/bootstrap.min.js"></script>
+    <script src="./js/app.js"></script>
+    <!--<script src="./js/timer.js"></script>-->
+
+</body>
+
+</html>
