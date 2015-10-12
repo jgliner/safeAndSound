@@ -9,6 +9,7 @@ A cooperative game made in JS, based on Keep Talking and Nobody Explodes
 
 ##### Todo
 * Menus
+* Success triggers (the current version just stops the timer and makes the modules green)
 * Display fixes for mobile
-* Loading screen
+* Sounds
 * Landing page
