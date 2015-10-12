@@ -1,3 +1,15 @@
+//-------------------------------------------------------
+//	Safe and Sound
+//  by Jarrett Gliner
+//  © 2015 All Rights Reserved
+//
+//	Based off "Keep Talking and Nobody Explodes"
+//  © 2015 Steel Crate Games
+//-------------------------------------------------------
+
+//-------------------------------------------------------
+//	INSTANTIATON FOR GLOBAL VARIABLES
+//-------------------------------------------------------
 var strikes = 0;
 
 function kablooey() {
@@ -14,9 +26,73 @@ function kablooey() {
 
 }
 
-$(document).ready(function() {
+function gameTimerOn() {
+	var time = 12000,
+	sec, mins, tenthsec, hundsec;
+
+	var counter = setInterval(function() {
+		sec = parseInt(time/100%60),
+		mins = parseInt(time/100/60);
+
+		sec < 10 ? sec = String("0"+sec) : sec;
+
+		$('#mainTimer').html(mins + ":" + sec );
+		time = time - 1;
+
+		if (time <= 0 || strikes === 3) {
+			$('#mainTimer').html("- -- --");
+			clearInterval(counter);
+			kablooey();
+		}
+
+	}, 10);
+
+};
+
+//-------------------------------------------------------
+//	GAME START
+//-------------------------------------------------------
+
+$('#startGame').click(function() {
+
+$('#startGame').addClass('invis');
+$('#countdown').removeClass('invis');
+var tminus = 3;
+$('#countdown').append('Mission Begins in '+tminus+'... ');
+var gamestart = setInterval(function() {
+	tminus--
+	$('#countdown').append(''+tminus+'... ');
+	if (tminus === 0) {
+		$('#menu').fadeOut();
+		clearInterval(gamestart);
+		gameTimerOn();
+	}
+}, 1000)
 
 console.time("All of it");
+
+//-------------------------------------------------------
+//	BANKS AND LISTS
+//-------------------------------------------------------
+
+var keypadColumns = {
+	orders: [
+		['a','b','c','d','e','f','g','h','i','j'],
+		['q','s','z','t','1','a','r','p','0','7'],
+		['z','3','m','5','l','p','q','n','4','x'],
+		['1','2','6','e','h','k','n','u','v','y'],
+		['8','9','c','i','k','m','t','w','x','y'],
+		['0','2','4','6','d','f','j','r','s','w']
+	]
+};
+
+var panicWords = {
+	commandPrefix: [["Alpha","Eligible","Hypo-","Master","Secret","Super-"],["Bravo","Flub-","i-","Mechanical","Secu-","Uber-"],["Crypto-","Garbage","Illegible","Oopsie","Spy"],["Delta","Geopolitical","Invisible","Peta-","Yoooo"],["Draxon","Glaxon","Java-","Quark","Umm"],["Electric","Hydro-","Left Hand","Right Hand","Uh Oh,"],["Electro-","Hyper-","Locking","Schwifty","Uhh"]],
+	commandSuffix: ["Agent","Bearfold","Bit","Bite","Bot","Boy","Bypass","Byte","Crystal","Dispersal Unit","Dryer","Enigma","Freud","Goose","Groose","Hacker","Jabroni","Key","Link","Man","Matic","Mixer","Pannel","Port","Reactor","Servo","Slide","Slot","Solwafter","Sponge","Thing","Touchdown","Tray","Trigger","Tumbler","Unit","Zorp"],
+	commandStatus: ["Failing","Error","Access",": Permission Denied","Messed Up","On the Fritz","Loose","Not Working","at Critical Mass","Needs Tinkering","Check","Shot","Breakdown","Drained","Needs Greasing","Unsafe","Released","Overheating","is Not Feeling Well","Stopped","Malfunction","Falling","Slacking","Deflated","Needs Rebooting","Unauthorized","Incorrect","Evacuated","Defective","Reset","Combination","Code","FUBAR'd","Override","Locked","No, Wait...","Mixed Up"]
+};
+
+var launchpadFormations = [["R","W","W","B","W","R","B","W","W","B","R","W","B","W","W","R"],["B","Y","Y","B","W","R","Y","W","Y","Y","Y","Y","Y","Y","Y","W"],["B","B","B","W","W","B","B","B","W","B","Y","B","R","W","R","W"],["G","R","W","W","W","G","B","W","G","G","G","G","W","R","R","G"],["R","W","W","R","W","Y","Y","W","W","R","R","W","W","W","W","W"],["W","R","B","R","W","W","R","W","W","W","B","W","R","B","R","W"],["W","W","W","W","G","Y","G","W","Y","R","Y","W","G","Y","G","W"],["B","W","W","B","W","W","W","W","R","R","R","R","B","R","R","B"],["W","W","G","W","Y","W","W","Y","W","W","G","W","W","G","W","Y"],["W","W","Y","Y","R","Y","Y","B","W","Y","B","W","W","W","Y","W"],["W","Y","Y","W","R","Y","Y","R","W","G","G","W","Y","W","W","Y"],["R","R","G","G","R","G","R","G","R","G","G","G","R","R","R","G"],["R","W","W","R","W","G","G","G","W","G","Y","G","R","G","G","G"],["G","R","R","R","G","B","B","R","G","B","B","Y","G","Y","Y","Y"],["B","B","R","R","B","B","W","W","R","R","R","R","W","W","W","W"]]; 
 
 //-------------------------------------------------------
 //	GLOBAL FUNCTIONS
@@ -496,29 +572,6 @@ var modKeypad = function(modNumber) {
 	};
 
 };
-
-//-------------------------------------------------------
-//	BANKS AND LISTS
-//-------------------------------------------------------
-
-var keypadColumns = {
-	orders: [
-		['a','b','c','d','e','f','g','h','i','j'],
-		['q','s','z','t','1','a','r','p','0','7'],
-		['z','3','m','5','l','p','q','n','4','x'],
-		['1','2','6','e','h','k','n','u','v','y'],
-		['8','9','c','i','k','m','t','w','x','y'],
-		['0','2','4','6','d','f','j','r','s','w']
-	]
-};
-
-var panicWords = {
-	commandPrefix: [["Alpha","Eligible","Hypo-","Master","Secret","Super-"],["Bravo","Flub-","i-","Mechanical","Secu-","Uber-"],["Crypto-","Garbage","Illegible","Oopsie","Spy"],["Delta","Geopolitical","Invisible","Peta-","Yoooo"],["Draxon","Glaxon","Java-","Quark","Umm"],["Electric","Hydro-","Left Hand","Right Hand","Uh Oh,"],["Electro-","Hyper-","Locking","Schwifty","Uhh"]],
-	commandSuffix: ["Agent","Bearfold","Bit","Bite","Bot","Boy","Bypass","Byte","Crystal","Dispersal Unit","Dryer","Enigma","Freud","Goose","Groose","Hacker","Jabroni","Key","Link","Man","Matic","Mixer","Pannel","Port","Reactor","Servo","Slide","Slot","Solwafter","Sponge","Thing","Touchdown","Tray","Trigger","Tumbler","Unit","Zorp"],
-	commandStatus: ["Failing","Error","Access",": Permission Denied","Messed Up","On the Fritz","Loose","Not Working","at Critical Mass","Needs Tinkering","Check","Shot","Breakdown","Drained","Needs Greasing","Unsafe","Released","Overheating","is Not Feeling Well","Stopped","Malfunction","Falling","Slacking","Deflated","Needs Rebooting","Unauthorized","Incorrect","Evacuated","Defective","Reset","Combination","Code","FUBAR'd","Override","Locked","No, Wait...","Mixed Up"]
-};
-
-var launchpadFormations = [["R","W","W","B","W","R","B","W","W","B","R","W","B","W","W","R"],["B","Y","Y","B","W","R","Y","W","Y","Y","Y","Y","Y","Y","Y","W"],["B","B","B","W","W","B","B","B","W","B","Y","B","R","W","R","W"],["G","R","W","W","W","G","B","W","G","G","G","G","W","R","R","G"],["R","W","W","R","W","Y","Y","W","W","R","R","W","W","W","W","W"],["W","R","B","R","W","W","R","W","W","W","B","W","R","B","R","W"],["W","W","W","W","G","Y","G","W","Y","R","Y","W","G","Y","G","W"],["B","W","W","B","W","W","W","W","R","R","R","R","B","R","R","B"],["W","W","G","W","Y","W","W","Y","W","W","G","W","W","G","W","Y"],["W","W","Y","Y","R","Y","Y","B","W","Y","B","W","W","W","Y","W"],["W","Y","Y","W","R","Y","Y","R","W","G","G","W","Y","W","W","Y"],["R","R","G","G","R","G","R","G","R","G","G","G","R","R","R","G"],["R","W","W","R","W","G","G","G","W","G","Y","G","R","G","G","G"],["G","R","R","R","G","B","B","R","G","B","B","Y","G","Y","Y","Y"],["B","B","R","R","B","B","W","W","R","R","R","R","W","W","W","W"]]; 
 
 //-------------------------------------------------------
 //	PLACE MODULES

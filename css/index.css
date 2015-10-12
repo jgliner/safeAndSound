@@ -2,7 +2,7 @@
 	margin: 0;
 }
 
-/*FONTS*/
+/*----------- FONTS -------------*/
 
 @font-face {
     font-family: "Digital Dream";
@@ -17,7 +17,7 @@
     src: local(Minecraft), url('../fonts/minecraft.ttf') format('opentype');
 }
 
-/*GENERAL BODY*/
+/*----------- GENERAL BODY -------------*/
 
 html, body {
 	height: 100%;
@@ -32,6 +32,10 @@ body {
 	letter-spacing: 1.5px;
 }
 
+h1 {
+	color: white;
+	text-align: center;
+}
 button {
 	outline: none;
 	border: 3px solid #808080 !important;
@@ -40,6 +44,108 @@ button:active {
 	outline: none;
 	border: 3px inset #bbbbbb !important;
 }
+
+.invis {
+	display: none;
+}
+
+/*----------- MENU -------------*/
+
+/*BACKGROUNDS*/
+
+#menu {
+	height: 100vh;
+	width: 100vw;
+	background-size: 100vw 100vh;
+	position: absolute;
+	z-index: 99999999999999999;
+	background-color: #808080
+}
+
+.start {
+	background: url(../images/menu.jpg) no-repeat;
+}
+
+#title
+{
+	position: absolute;
+	left: 50%;
+	top: 33%;
+	transform: translate(-50%, -50%);
+	width: 75vw;
+}
+
+.startText {
+	position: absolute;
+	left: 50%;
+	top: 55%;
+	transform: translate(-50%, -50%);
+}
+.startText h1 {
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+	animation: type 1s steps(25, end);
+	font-size: 3.5vw;
+}
+@keyframes type{
+  	from {width: 0;}
+}
+.startText h1:nth-child(2) {
+	animation: type2 2s steps(33, end);
+}
+.startText h1:nth-child(4) {
+	animation: type3 3.5s steps(40, end);
+}
+@keyframes type2{
+	0%{width: 0;}
+	50%{width: 0;}
+	100%{ width: 100; } 
+}
+@keyframes type3{
+	0%{width: 0;}
+	60%{width: 0;}
+	100%{ width: 100; } 
+}
+
+#startGame, #restartGame {
+	position: absolute;
+	left: 50%;
+	top: 74%;
+	transform: translate(-50%, -50%);
+	border: 5px solid white !important;
+	background: none !important;
+	color: white !important;
+	font-size: 3vw;
+	padding-top: 10px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+#startGame:active, #restartGame:active {
+	border: 5px solid #aaa !important;
+	color: #aaa !important;
+}
+#startGame {
+	white-space: nowrap;
+	overflow: hidden;
+	animation: pop 3.6s;
+}
+@keyframes pop{
+	0%{opacity: 0}
+	99%{opacity: 0}
+	100%{opacity: 1} 
+}
+
+#countdown {
+	position: absolute;
+	top: 72.8%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+}
+
+
+/*STRIKE DISPLAY*/
 
 .strikes {
 	display: none;
@@ -444,13 +550,15 @@ button:active {
 	left: -4px;
 }
 
+/*----------- MODULES -------------*/
+
+/*KEYPAD*/
+
 .comfirm:focus {
 	text-decoration: none;
 	border: none;
 	outline: none;
 }
-
-/*KEYPAD*/
 
 .keypad {
 	height: 100%;
