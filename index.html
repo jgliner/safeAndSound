@@ -23,16 +23,21 @@
   <body>
 
     <div id="menu" class="start">
-        <img src="./images/title.png" id="title">
-        <div id="menuText" class="startText">
+        <img src="./images/title.png" id="menuheader">
+        <div id="menuText" class="animatedMenu">
             <h1>You have three minutes to</h1>
             <h1>open the safe before it explodes.</h1>
             <br>
             <h1>Good luck, agent. Make your country proud.</h1>
         </div>
-        <button id="startGame">Get to It</button>
-        <button id="restartGame" class="invis">Try Again</button>
+        <button id="startGame" class="startmenu">Get to It</button>
         <h1 id="countdown" class="invis"></h1>
+    </div>
+
+    <div id="explode" style="display: none;">
+        <img src="./images/explosionouter.png" style="opacity: 0;" id="outer">
+        <img src="./images/explosionmiddle.png" style="opacity: 0;" id="mid">
+        <img src="./images/explosioninner.png" style="opacity: 0;" id="inner">
     </div>
 
     <div class="container-fluid">

@@ -12,19 +12,9 @@
 //-------------------------------------------------------
 var strikes = 0;
 
-function kablooey() {
-	console.log("BOOM!!!!"); 
-	$(".mod").css('background-color', 'red').removeClass('on').removeClass('panicOff');
-	$("a").off();
-	$("button, .launchpad").off();
-	$(".commandText").addClass("blinker").html('<br>--------');
-	$(".panicTimer").addClass("blinker").html('__');
-	for (var i = 1; i < 99999; i++) {
-        window.clearInterval(i);
-    }
-    $('.lbutton, .lbuttonOn').removeClass('W B Y G blink noblink').addClass('R');
-
-}
+//-------------------------------------------------------
+//	GAME START
+//-------------------------------------------------------
 
 function gameTimerOn() {
 	var time = 12000,
@@ -49,13 +39,9 @@ function gameTimerOn() {
 
 };
 
-//-------------------------------------------------------
-//	GAME START
-//-------------------------------------------------------
+$('.startmenu').click(function() {
 
-$('#startGame').click(function() {
-
-$('#startGame').addClass('invis');
+$('.startmenu').addClass('invis');
 $('#countdown').removeClass('invis');
 var tminus = 3;
 $('#countdown').append('Mission Begins in '+tminus+'... ');
@@ -63,7 +49,10 @@ var gamestart = setInterval(function() {
 	tminus--
 	$('#countdown').append(''+tminus+'... ');
 	if (tminus === 0) {
-		$('#menu').fadeOut();
+		$('#menu').fadeOut(function() {
+			$(this).removeClass('start');
+			$('#menuheader').attr('src', '');
+		});
 		clearInterval(gamestart);
 		gameTimerOn();
 	}
@@ -749,3 +738,45 @@ $(".launchpad").on("click", ".lbuttonOn", function(e) {
 
 
 });
+
+//-------------------------------------------------------
+//	OUTCOMES
+//-------------------------------------------------------
+
+function kablooey() {
+	console.log("BOOM!!!!"); 
+	$(".mod").removeClass('on').removeClass('panicOff');
+	$("a").off();
+	$("button, .launchpad").off();
+	$(".commandText").addClass("blinker").html('<br>--------');
+	$(".panicTimer").addClass("blinker").html('__');
+	for (var i = 1; i < 99999; i++) {
+        window.clearInterval(i);
+    }
+    $('.lbutton, .lbuttonOn').removeClass('W B Y G blink noblink').addClass('R');
+	
+	$('#menuText, #countdown').text('');
+	$('#menu').css('display','initial').addClass('flash');
+	
+	var explodeint = 0;
+	var explode = setInterval(function() {
+		switch(explodeint) {
+			case 0: $('#menu').removeClass('flash'); $('#explode').css('display', 'block'); $('#inner').css('opacity', 1); break;
+			case 1: $('#mid').css('opacity', 1); break;
+			case 2: $('#outer').css('opacity', 1); break;
+			case 3:	
+				$('#menu').addClass('failure');
+				$('#menuheader').attr('src', './images/failuretext.png');
+				$('#explode').css('display', 'none');
+				$('#menuText').html('<h1>Try again?</h1>');
+				$('#startGame').text("Restart").removeClass('invis startmenu').addClass('gameover');
+				break;
+			case 4: clearInterval(explode); break;
+		}
+		explodeint++
+	},800);
+}
+
+$('#menu').on("click", ".gameover", function() {
+	location.reload();
+})
