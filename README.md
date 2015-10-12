@@ -3,6 +3,19 @@ A cooperative game made in JS, based on Keep Talking and Nobody Explodes
 
 # Changelog
 
+## v0.0.3 (2015-11-10)
+
+##### Changes
+* Added failure animation sequences
+* Added some sweet pixel explosions
+* Added game over screen
+
+##### Todo
+* Success triggers (the current version just stops the timer and makes the modules green)
+* Display fixes for mobile
+* Sounds
+* Landing page
+
 ## v0.0.2 (2015-11-10)
 
 ##### Changes
@@ -11,6 +24,7 @@ A cooperative game made in JS, based on Keep Talking and Nobody Explodes
 * Changed start event from Document Ready to start button click
 
 ##### Todo
+* Game over screen
 * Success triggers (the current version just stops the timer and makes the modules green)
 * Display fixes for mobile
 * Sounds
