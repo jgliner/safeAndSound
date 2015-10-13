@@ -3,7 +3,19 @@ A cooperative game made in JS, based on Keep Talking and Nobody Explodes
 
 # Changelog
 
-## v0.0.3 (2015-11-10)
+## v0.0.4 (2015-10-12)
+
+##### Changes
+* Added success triggers, changed the green background to a green LED upon successfully solving a given module
+* Added victory screen
+* Fixed some CSS spacing bugs to accommodate the module LED indicators
+
+##### Todo
+* Display fixes for mobile
+* Sounds
+* Landing page
+
+## v0.0.3 (2015-10-11)
 
 ##### Changes
 * Added failure animation sequences
@@ -16,7 +28,7 @@ A cooperative game made in JS, based on Keep Talking and Nobody Explodes
 * Sounds
 * Landing page
 
-## v0.0.2 (2015-11-10)
+## v0.0.2 (2015-10-11)
 
 ##### Changes
 * Added start menu
