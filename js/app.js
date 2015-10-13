@@ -11,6 +11,7 @@
 //	INSTANTIATON FOR GLOBAL VARIABLES
 //-------------------------------------------------------
 var strikes = 0;
+var correct = 0;
 
 //-------------------------------------------------------
 //	GAME START
@@ -54,7 +55,7 @@ var gamestart = setInterval(function() {
 			$('#menuheader').attr('src', '');
 		});
 		clearInterval(gamestart);
-		gameTimerOn();
+		//gameTimerOn();
 	}
 }, 1000)
 
@@ -232,7 +233,7 @@ var panicSetup = function(serial, modNumber) {
 		var modcode = $("#mod" + modNumber);
 		modcode.addClass('panicOff');
 		modcode.prepend('<div class="panic"></div>');
-		modcode.find('.panic').prepend('<div class="panicModule"></div><div class="panicTimerBox"><div class="panicTimer"></div></div><div class="panicBar"></div><button class=buttontimer></button><div class="commandBox"><div class="commandText"></div></div><div class="panicslider"></div><input class="val" readonly></input>');
+		modcode.find('.panic').prepend('<div class="panicModule"><div class="panicTimerBox"><div class="panicTimer"></div></div><div class="panicBar"></div><button class=buttontimer></button><div class="commandBox"><div class="commandText"></div></div><div class="panicslider"></div><input class="val" readonly></input></div>');
 		$(function() {
 		    modcode.find( ".panicslider" ).slider({
 		      range: "max",
@@ -251,7 +252,8 @@ var panicSetup = function(serial, modNumber) {
 	this.initTimer = function(modcode) {
 		var frq = specificRand(300,600),
 		panicTimer = 300,
-		newbar = 65;
+		newbar = 61;
+		correct++;
 		modcode.find('.panicTimer').html('__');
 		modcode.find('.commandText').html('<br>--------');
 		this.runTimer(modcode, modNumber, frq, panicTimer, newbar);
@@ -269,6 +271,8 @@ var panicSetup = function(serial, modNumber) {
 			if (self.runningFrq === 0) {
 
 				modcode.addClass('on');
+				correct--;
+				console.log(correct);
 				self.placeCommand(modcode);
 
 				self.counter = setInterval(function() {
@@ -289,12 +293,12 @@ var panicSetup = function(serial, modNumber) {
 
 				}, 100);
 			}
-		}, 100);
+		}, 100000);
 
 		var resetTimer = function() {
 			console.log("resetting", "OLD FRQ COUNT: ", self.runningFrq)
 
-			modcode.find('.panicBar').css('width', "65%");
+			modcode.find('.panicBar').css('width', "61%");
 			modcode.find('.panicTimer').html('__');
 			modcode.find('.commandText').html('<br>--------').removeAttr('style');
 			modcode.removeClass('on');
@@ -302,16 +306,18 @@ var panicSetup = function(serial, modNumber) {
 			clearInterval(self.counter);
 
 			self.runningTimer = 300;
-			newbar = 65;
+			newbar = 61;
 			self.runningFrq = specificRand(300,600);
-			console.log("NEW FRQ COUNT: ", self.runningFrq)
+			correct++;
+			console.log("NEW FRQ COUNT: ", self.runningFrq, "GIVING BACK POINT... POINTS: ", correct);
+
 		}
 
 		modcode.find('.buttontimer').on("click", function(e) {
 			e.preventDefault();
 			resetTimer();
 			var sliderVal = modcode.find('.ui-slider').slider('option', 'value')
-			sliderVal === answers[modNumber] ? ( console.log("Phew."), modcode.find(".panicModule").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100) ) : (strikes++, $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? ($('.panicTimer').html('__'), $('.commandText').html('<br>--------'), kablooey() ) : console.log("NOPE! STRIKES: ", strikes)) )
+			sliderVal === answers[modNumber] ? ( console.log("Phew.") ) : (strikes++, $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? ($('.panicTimer').html('__'), $('.commandText').html('<br>--------'), kablooey() ) : console.log("NOPE! STRIKES: ", strikes)) )
 		});
 	}
 
@@ -623,7 +629,7 @@ $('.indivWiresS').on("click", function(e) {
 	var clickedMod = ($(this).closest('.mod').attr('id')[3]),
 	guide = Number(answers[clickedMod]),
 	x = Number($(this).attr('id')[4]);
-	x === guide ? ($(this).addClass('cutS'), $(this).closest('.mod').css('background-color', 'green'), console.log("SUCCESS!")) : (strikes++, $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)));
+	x === guide ? ($(this).addClass('cutS'), $(this).closest('.mod').find('.modled').addClass('correct'), correct++, ( correct === 4 ? winner() : console.log("SUCCESS!", "CORRECT: ", correct+"/4")) )  : (strikes++, $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)));
 });
 
 // COMPLEX WIRES
@@ -641,17 +647,17 @@ $('.indivWires').on("click", function(e) {
 		outcome === 'N' ? (strikes++, $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)) )
 		: ($(this).addClass('cut'), guide[x[x.length-1]] = "-"), console.log(guide);
 		postcheck = guide.indexOf("Y");
-		postcheck === -1 ? ($(this).closest('.mod').css('background-color', 'green'), console.log("SUCCESS!"), $(this).off(), $(this).closest('.wireWrap').find('.confirm').off()) : false;
+		postcheck === -1 ? ($(this).closest('.mod').find('.modled').addClass('correct'), correct++, ( correct === 4 ? winner() : console.log("SUCCESS!", "CORRECT: ", correct+"/4")), $(this).off(), $(this).closest('.wireWrap').find('.confirm').off()) : false;
 	}
 	else {
-		$(this).closest('.mod').css('background-color', 'green');
+		$(this).closest('.mod').find('.modled').addClass('correct');
 		console.log("SUCCESS!");
 	}
 });
 $('.confirm').on("click", function(e) {
 	e.preventDefault();
 	var guide = answers[($(this).closest('.mod').attr('id')[3])];
-	guide.indexOf('Y') === -1 ? ($(this).closest('.mod').css('background-color', 'green'), console.log("SUCCESS!")) : (strikes++,$('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)));
+	guide.indexOf('Y') === -1 ? ($(this).closest('.mod').find('.modled').addClass('correct'), correct++, ( correct === 4 ? winner() : console.log("SUCCESS!", "CORRECT: ", correct+"/4")) ) : (strikes++,$('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)));
 })
 
 // KEYPAD
@@ -687,10 +693,12 @@ $('.kbutton').on("click", function(e) {
 			return false
 		}
 		else {
-			console.log("SUCCESS!");
+			correct++;
+			console.log("SUCCESS!", "CORRECT: ", correct+"/4");
 			$(this).addClass('correctKeypad');
-			$(this).parent('.keypad').parent('.mod').css('background-color','green');
+			$(this).closest('.mod').find('.modled').addClass('correct');
 			$(this).off("click");
+			if (correct === 4) { winner(); }
 		}
 	}
 });
@@ -726,9 +734,11 @@ $(".launchpad").on("click", ".lbuttonOn", function(e) {
 	console.log("CUR: ", currentConfig.join(''), "\nANS: ", guide, currentConfig === guide);
 
 	if (currentConfig.join('') === guide) {
-		console.log("SUCCESS!");
-		$(this).closest('.mod').css('background-color','green');
+		correct++; 
+		console.log("SUCCESS!", "CORRECT: ", correct+"/4");
+		$(this).closest('.mod').find('.modled').addClass('correct');
 		$(this).off("click");
+		if (correct === 4) { winner(); }
 	}
 
 });
@@ -743,19 +753,42 @@ $(".launchpad").on("click", ".lbuttonOn", function(e) {
 //	OUTCOMES
 //-------------------------------------------------------
 
+$(window).on('keydown', function(e) {
+	if(e.which==82) {
+		winner();
+	}
+})
+
+function winner() {
+	console.log("A WINRAR IS YOU");
+	everythingOff();
+	$(".commandText, .panicTimer").css('color', 'green');
+	$('.lbutton, .lbuttonOn').removeClass('W B Y G blink noblink').addClass('G');
+
+	var opensafeint = 0;
+	var opensafe = setInterval(function() {
+		switch(opensafeint) {
+			case 0: $('#mainTimer').text('AUTHORIZED').css('color', 'green'); break;
+			case 1: $('.bomb').addClass('dooropen'); $('.mod').addClass('moddooropen'); $('#safeimg').attr('src', './images/safeopen.png'); break;
+			case 3:	
+				$('#menu').addClass('success').css('display','initial');
+				$('#menuheader').attr('src', './images/successtext.png');
+				$('#menuText').addClass('successMenu').html('<h1>Excellent work.</h1><h1>You outsmarted the Commando 8.</h1><br></div>').after('<div class="successMenu2"><h1>You could even say.....</h1><h1>You blew us all away.</h1></div>');
+				$('#startGame').text("Go Again").removeClass('invis startmenu').addClass('gameoverwin');
+				break;
+			case 4: clearInterval(opensafe); break;
+		}
+		opensafeint++
+	},800);
+
+}
+
 function kablooey() {
-	console.log("BOOM!!!!"); 
-	$(".mod").removeClass('on').removeClass('panicOff');
-	$("a").off();
-	$("button, .launchpad").off();
-	$(".commandText").addClass("blinker").html('<br>--------');
-	$(".panicTimer").addClass("blinker").html('__');
-	for (var i = 1; i < 99999; i++) {
-        window.clearInterval(i);
-    }
+	console.log("BOOM!!!!");
+	everythingOff();
+	$(".commandText, .panicTimer").addClass("blinker");
     $('.lbutton, .lbuttonOn').removeClass('W B Y G blink noblink').addClass('R');
 	
-	$('#menuText, #countdown').text('');
 	$('#menu').css('display','initial').addClass('flash');
 	
 	var explodeint = 0;
@@ -777,6 +810,18 @@ function kablooey() {
 	},800);
 }
 
-$('#menu').on("click", ".gameover", function() {
+function everythingOff() {
+	$(".mod").removeClass('on').removeClass('panicOff');
+	$("a").off();
+	$("button, .launchpad").off();
+	$(".commandText").html('<br>--------');
+	$(".panicTimer").html('__');
+	for (var i = 1; i < 99999; i++) {
+        window.clearInterval(i);
+    }
+    $('#menuText, #countdown').text('');
+}
+
+$('#menu').on("click", ".gameover, .gameoverwin", function() {
 	location.reload();
 })

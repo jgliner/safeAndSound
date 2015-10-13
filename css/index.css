@@ -73,38 +73,6 @@ button:active {
 	width: 75vw;
 }
 
-.animatedMenu {
-	position: absolute;
-	left: 50%;
-	top: 55%;
-	transform: translate(-50%, -50%);
-}
-.animatedMenu h1 {
-	white-space: nowrap;
-	overflow: hidden;
-	width: 100%;
-	animation: type 1s steps(25, end);
-	font-size: 3.5vw;
-}
-@keyframes type{
-  	from {width: 0;}
-}
-.animatedMenu h1:nth-child(2) {
-	animation: type2 2s steps(33, end);
-}
-.animatedMenu h1:nth-child(4) {
-	animation: type3 3.5s steps(40, end);
-}
-@keyframes type2{
-	0%{width: 0;}
-	50%{width: 0;}
-	100%{ width: 100; } 
-}
-@keyframes type3{
-	0%{width: 0;}
-	60%{width: 0;}
-	100%{ width: 100; } 
-}
 
 #startGame {
 	position: absolute;
@@ -129,10 +97,93 @@ button:active {
 .gameover {
 	animation: pop 1s;
 }
+.gameoverwin {
+	animation: pop 7.5s;
+}
 @keyframes pop{
 	0%{opacity: 0}
 	99%{opacity: 0}
 	100%{opacity: 1} 
+}
+
+/*MENU TEXT ANIMATION (MAIN)*/
+
+.mainMenu {
+	position: absolute;
+	left: 50%;
+	top: 55%;
+	transform: translate(-50%, -50%);
+}
+.mainMenu h1 {
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+	animation: type 1s steps(25, end);
+	font-size: 3.5vw;
+}
+@keyframes type{
+  	from {width: 0;}
+}
+.mainMenu h1:nth-child(2) {
+	animation: type2 2s steps(33, end);
+}
+.mainMenu h1:nth-child(4) {
+	animation: type3 3.5s steps(40, end);
+}
+@keyframes type2{
+	0%{width: 0;}
+	50%{width: 0;}
+	100%{ width: 100; } 
+}
+@keyframes type3{
+	0%{width: 0;}
+	60%{width: 0;}
+	100%{ width: 100; } 
+}
+
+@keyframes type4{
+	0%{width: 0;}
+	70%{width: 0;}
+	100%{ width: 100; } 
+}
+
+/*MENU TEXT ANIMATION (SUCCESS)*/
+
+.successMenu {
+	position: absolute;
+	left: 50%;
+	top: 49%;
+	transform: translate(-50%, -50%);
+}
+.successMenu2 {
+	position: absolute;
+	left: 50%;
+	top: 62%;
+	transform: translate(-50%, -50%);
+}
+
+.successMenu h1 {
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+	animation: type 1s steps(15, end);
+	font-size: 3.5vw;
+}
+
+.successMenu h1:nth-child(2) {
+	animation: type2 3s steps(30, end);
+}
+
+.successMenu2 h1 {
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+	animation: type4 5s steps(23, end);
+	font-size: 3.5vw;
+}
+
+.successMenu2 h1:nth-child(2) {
+	animation: pop 6s;
 }
 
 /*STATE SPECIFIC MENU ELEMENTS*/
@@ -185,6 +236,17 @@ button:active {
 .failure {
 	background: url(../images/failure.jpg) no-repeat;
 	background-color: red;
+}
+.success {
+	background: url(../images/success.jpg) no-repeat;
+	background-color: green;
+}
+.dooropen {
+    transform: translate(-50%, -50%) perspective(1172px) rotateX(1deg) rotateY(19deg) rotateZ(-1.5deg) skewY(-1deg) skewX(-1deg) !important;
+    left: 60%!important;
+    width: 58%!important;
+    height: 71%!important;
+    top: 56.5%!important;
 }
 
 
@@ -347,7 +409,45 @@ button:active {
 	padding: 0 !important;
 }
 
-/*THREE DIGIT INDICATOR*/
+#mod1.moddooropen {
+	left: 5.5vw !important;
+	top: -1vw !important;
+}
+#mod3.moddooropen {
+	left: 5.7vw !important;
+	top: 2.6vh !important;
+}
+
+/*MODULE LEDS*/
+
+.modled {
+	position: absolute;
+	top: 0.5vh;
+	left: 0.5vw;
+}
+.modled img {
+	width: 3vw;
+}
+
+.correct:after {
+    content: '';
+    position: absolute;
+    height: 87.5%;
+    width: 73%;
+    background-color: #19A719;
+    border-top-left-radius: 82%;
+    border-top-right-radius: 82%;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    left: 15%;
+    opacity: 0.7;
+    border: 3px solid #158915;
+    border-bottom: 3px solid grey;
+    top: 0.07vh;
+    box-shadow: 0px -2px 10px green;
+}
+
+/*THREE LETTER INDICATOR*/
 
 #indicator {
 	background: url(../images/indicatorPlaque.png) no-repeat center/contain;
@@ -660,10 +760,10 @@ button:active {
 }
 .wireWrap {
 	position: relative;
-	height: 80%;
+	height: 71%;
 	width: 80%;
 	left: 10%;
-	top: 0;
+	top: 1.5vh;
 }
 
 .wireDocks, .simpleWireDocks {
@@ -846,8 +946,6 @@ button:active {
 	position: absolute;
 	width: 100%;
 	height: 100%;
-	border: 5px solid green;
-	display: none;
 }
 
 .panicOff {
@@ -867,8 +965,8 @@ button:active {
 .panicTimerBox {
 	position: absolute;
 	top: 5%;
-	left: 10%;
-	height: 28%;
+	left: 12%;
+	height: 25%;
 	width: 17%;
 	background-color: black;
 	text-align: center;
@@ -883,8 +981,8 @@ button:active {
 .panicBar {
 	position: absolute;
 	top: 11%;
-	left: 27%;
-	width: 65%;
+	left: 29%;
+	width: 61%;
 	height: 15%;
 	background-color: #D21414;
 	border: 3px solid #EB0808;
@@ -971,10 +1069,10 @@ button:active {
 
 .launchpad {
 	position: absolute;
-	height: 80%;
-	width: 80%;
-	left: 10%;
-	top: 10%;
+	height: 77%;
+	width: 77%;
+	left: 12%;
+	top: 12%;
 }
 
 .lbutton, .lbuttonOn {
