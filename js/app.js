@@ -295,7 +295,7 @@ var panicSetup = function(serial, modNumber) {
 
 				}, 100);
 			}
-		}, 10);
+		}, 100);
 
 		var resetTimer = function() {
 			console.log("resetting", "OLD FRQ COUNT: ", self.runningFrq)
