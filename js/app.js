@@ -12,13 +12,14 @@
 //-------------------------------------------------------
 var strikes = 0;
 var correct = 0;
+var screenwidth = $(window).width();
 
 //-------------------------------------------------------
 //	GAME START
 //-------------------------------------------------------
 
 function gameTimerOn() {
-	var time = 12000,
+	var time = 18000,
 	sec, mins, tenthsec, hundsec;
 
 	var counter = setInterval(function() {
@@ -55,7 +56,7 @@ var gamestart = setInterval(function() {
 			$('#menuheader').attr('src', '');
 		});
 		clearInterval(gamestart);
-		//gameTimerOn();
+		gameTimerOn();
 	}
 }, 1000)
 
@@ -342,7 +343,10 @@ var panicSetup = function(serial, modNumber) {
 		commandTextElementDefaultH = modcode.find('.commandBox').height();
 		
 		if (commandTextElement[0].scrollHeight > commandTextElementDefaultH) {
-			var fontSize = 2.15;
+
+			var fontpx = Number($('.commandText').css('font-size').slice(0,-2));
+			var fontvw = (((fontpx/width).toFixed(3))*100).toFixed(1);
+
 			while (commandTextElement[0].scrollHeight > 55) {
 				fontSize -= 0.1;
 				commandTextElement.css('font-size', fontSize+"vw");

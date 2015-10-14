@@ -199,6 +199,7 @@ button:active {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 100%;
+	font-size: 3.5vw;
 }
 
 .flash {
@@ -494,206 +495,33 @@ button:active {
 
 /*-----------OUTLET TYPES-------------*/
 
-/*USA*/
-#usa {
-    position: relative;
+.outlet {
+	position: relative;
     left: 4%;
     top: 18%;
     width: 90%;
     height: 65%;
+}
+
+#usa {
     background: url(../images/outlets/us.png) no-repeat center/contain;
 }
-
-/*UK*/
-
-#uk .prong1 {
-	position: absolute;
-	top: 40%;
-	left: 50%;
-	border: 5px solid black;
-	border-left: 4px;
-	transform: translate(-50%, -50%);
+#uk {
+    background: url(../images/outlets/uk.png) no-repeat center/contain;
 }
-#uk .prong2 {
-	position: absolute;
-	top: 55%;
-	left: 30%;
-	border: 5px solid black;
-	border-bottom: 4px;
-	transform: translate(-50%, -50%);
-}
-#uk .prong3 {
-	position: absolute;
-	top: 55%;
-	left: 70%;
-	border: 5px solid black;
-	border-bottom: 4px;
-	transform: translate(-50%, -50%);
-}
-
-/*GER*/
-
 #ger {
-	position: relative;
-	height: 60px;
-	width: 60px;
-	border-radius: 50%;
-	top: 50%;
-	left: 50%;
-	border: 2px solid #444;
-	transform: translate(-50%, -50%);
+    background: url(../images/outlets/ger.png) no-repeat center/contain;
 }
-
-#ger .prong1 {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	border: 5px groove #555;
-	border-radius: 50%;
-	transform: translate(-50%, -50%);
-}
-
-#ger .prong2 {
-	position: absolute;
-	top: 50%;
-	left: 18%;
-	border: 5px solid black;
-	transform: translate(-50%, -50%);
-	border-radius: 50%;
-}
-#ger .prong3 {
-	position: absolute;
-	top: 50%;
-	left: 83%;
-	border: 5px solid black;
-	border-radius: 50%;
-	transform: translate(-50%, -50%);
-}
-
-/*IND*/
-
 #ind {
-	position: relative;
-	height: 30px;
-	width: 60px;
-	top: 50%;
-	left: 50%;
-	border: 2px solid #444;
-	transform: translate(-50%, -50%);
+    background: url(../images/outlets/ind.png) no-repeat center/contain;
 }
-
-#ind .prong1 {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	border: 5px solid black;
-	border-radius: 50%;
-	transform: translate(-50%, -50%);
-}
-
-#ind .prong2 {
-	position: absolute;
-	top: 50%;
-	left: 18%;
-	border: 5px solid black;
-	transform: translate(-50%, -50%);
-	border-radius: 50%;
-}
-#ind .prong3 {
-	position: absolute;
-	top: 50%;
-	left: 83%;
-	border: 5px solid black;
-	border-radius: 50%;
-	transform: translate(-50%, -50%);
-}
-
-/*AUS*/
 #aus {
-    position: relative;
-    left: 4%;
-    top: 18%;
-    width: 90%;
-    height: 65%;
     background: url(../images/outlets/aus.png) no-repeat center/contain;
 }
-
-/*ISR*/
-
 #isr {
-	position: relative;
-	height: 60px;
-	width: 60px;
-	border-radius: 50%;
-	top: 50%;
-	left: 50%;
-	border: 2px solid #444;
-	transform: translate(-50%, -50%);
-}
-#isr:after {
-	position: absolute;
-	content: '';
-	border: 4px groove #444;
-	border-radius: 50%;
-	height: 5px;
-	width: 5px;
-	bottom: 25px;
-	left: 24px;
+    background: url(../images/outlets/isr.png) no-repeat center/contain;
 }
 
-
-#isr .prong1 {
-	position: absolute;
-	top: 75%;
-	left: 50%;
-	border: 5px solid black;
-	border-left: 4px;
-	transform: translate(-50%, -50%);
-}
-#isr .prong2 {
-	position: absolute;
-	top: 50%;
-	left: 18%;
-	border: 5px solid black;
-	border-bottom: 4px;
-	-webkit-transform: rotate(45deg) translate(-50%, -50%);
-	-moz-transform: rotate(45deg) translate(-50%, -50%);
-	-ms-transform: rotate(45deg) translate(-50%, -50%);
-	-o-transform: rotate(45deg) translate(-50%, -50%);
-	transform: rotate(45deg) translate(-50%, -50%);
-}
-#isr .prong3 {
-	position: absolute;
-	top: 38%;
-	left: 76%;
-	border: 5px solid black;
-	border-bottom: 4px;
-	-webkit-transform: rotate(-45deg) translate(-50%, -50%);
-	-moz-transform: rotate(-45deg) translate(-50%, -50%);
-	-ms-transform: rotate(-45deg) translate(-50%, -50%);
-	-o-transform: rotate(-45deg) translate(-50%, -50%);
-	transform: rotate(-45deg) translate(-50%, -50%);
-}
-#isr .prong1:after {
-	position: absolute;
-	content: '';
-	border: 4px solid black;
-	border-radius: 50%;
-	height: 5px;
-	width: 5px;
-	bottom: -4px;
-	left: -1.91px;
-}
-#isr .prong3:after, #isr .prong2:after {
-	position: absolute;
-	content: '';
-	border: 4px solid black;
-	border-radius: 50%;
-	height: 5px;
-	width: 5px;
-	bottom: -2px;
-	left: -4px;
-}
 
 /*----------- MODULES -------------*/
 
@@ -851,11 +679,12 @@ button:active {
 	width: 20%;
 	height: 100%;
 	left: -20%;
+	top: 53%;
 	font-size: 125%;
 }
 .ledOnOff {
-	position: absolute;
-	left: 108%;
+	position: relative;
+	left: 60.5%;
 	display: inline-block;
 	border: 1px solid #C70303;
 	border-radius: 50%;
@@ -877,13 +706,14 @@ button:active {
 	background-color: #8B0101;
 }
 
-.cut::after {
-	position: relative;
-	content: "|||||||||||||||";
+.cut:after {
+	position: absolute;
+	content: "||||||||||||||||||||||||||||||||";
 	letter-spacing: -2px;
 	left: 40%;
-	top: -1.5px;
-	color: #4F2929;
+	top: 0.5vh;
+	color: #BDBDBD;
+	transform: translate(-50%,0%);
 }
 
 /*SIMPLE WIRES*/
@@ -1179,4 +1009,338 @@ button:active {
     -o-transition: all 0.2s linear;
     -ms-transition: all 0.2s linear;
     transition: all 0.2s linear;
+}
+
+/*----------- RESPONSIVE (PORTRAIT) -------------*/
+
+@media (orientation: portrait) and (max-width: 768px) {
+
+	/*SCENERY*/
+
+	#siren {
+		position: absolute;
+		top: -40vh;
+		left: -49vw;
+	}
+	#pipe1 {
+		position: absolute;
+		left: 28vw;
+	}
+	#pipe2 {
+		position: absolute;
+		left: 45vw;
+	}
+
+	/* Remove scenery to make room for the safe */
+	#sign {
+		display: none;
+	}
+
+	/* Adjust the safe to take up the full width */
+	.safe {
+		position: absolute;
+		left: 52.7%;
+		bottom: 0;
+		width: 109vw;
+		height: 91vh;
+		transform: translate(-50%, 0%);
+		max-height: 800px;
+		max-width: 910px;
+	}
+
+	/* Outlet on top*/
+	#outletWrap {
+		position: absolute;
+		height: 22.5vw;
+		width: 11.5vw;
+		left: 29vw;
+		top: -15.5vw;
+		transform: rotate(90deg);
+	}
+
+	/* Adjust identifier text size */
+	#identifiers {
+	    top: 1vh;
+	    left: -1vw;
+	    font-size: 2.6vw;
+	    height: 100%;
+	    width: 100%;
+	}
+
+	#mainTimer {
+		font-size: 4.6vw;
+		line-height: 7vh;
+	}
+
+	#indicatorCode {
+		font-size: 3vw;
+		left: 25%;
+		top: 17%;
+		line-height: 3.5vh;
+	}
+
+	/*MODULES (general)*/
+
+	#mod2, #mod3 {
+		top: 3.5vh;
+	}
+	#mod1, #mod3 {
+		left: 3.35vw;
+	}
+
+	/*MODULES (specific)*/
+
+	/*keypad*/
+	.kbutton {
+		font-size: 4vh;
+	}
+
+	/*complex wires*/
+	.confirm {
+		height: 15%;
+	}
+
+	/*panic*/
+	.commandText {
+		font-size: 3vw;
+		top: -3vh;
+	}
+
+}
+
+@media (max-width: 455px) {
+
+	/* Adjust identifier text size for phones */
+	#identifiers {
+		top: 1vh;
+		line-height: 3vh;
+	}
+	#serial {
+		font-size: 3.5vw;
+	}
+	#mainTimer {
+		font-size: 5.6vw;
+	}
+
+	/* Adjust correct module light size (pseudoselector) */
+	.correct:after {
+		height: 3vw;
+		width: 73%;
+		top: 0.4vh;
+	}
+
+}
+
+@media (max-width: 455px) and (max-aspect-ratio: 2/3) {
+
+	html, body {
+		background: blue !important;
+	}
+
+	/* Outlet on top*/
+	#outletWrap {
+		left: 37vw;
+		top: -17.5vw;
+	}
+
+	/*MODULES (specific)*/
+
+	/*keypad*/
+	.kbutton {
+		font-size: 3vh;
+		width: 32%
+	}
+
+	/*panic*/
+	.panicTimerBox {
+		top: 12%;
+		height: 17%;
+		width: 17%;
+		font-size: 4vw;
+	}
+	.panicBar {
+		top: 13%;
+	}
+	.commandText {
+		font-size: 3.5vw;
+		top: -1.5vh;
+	}
+	.buttontimer {
+		width: 15%;
+	}
+	.val {
+		font-size: 4vw;
+    	line-height: 4.5vh;
+		width: 15% !important;
+	}
+
+	/*launchpad*/
+	.launchpad {
+	    position: absolute;
+	    height: 77%;
+	    width: 89%;
+	    left: 6%;
+	    top: 12%;
+	}
+	.lbutton {
+		padding: 0 !important;
+	}
+
+
+
+}
+
+/*----------- RESPONSIVE (LANDSCAPE) -------------*/
+
+@media (orientation: landscape) {
+
+	/*SCENERY*/
+
+	#siren {
+		position: absolute;
+		top: -19vh;
+		width: 36vh;
+	}
+	#sign {
+		position: absolute;
+		left: 82vw;
+		top: 6vh;
+		width: 18vh;
+	}
+	#pipe1 {
+		position: absolute;
+		left: 29vw;
+		width: 36vh;
+	}
+	#pipe2 {
+		position: absolute;
+		left: 51vw;
+		width: 36vh;
+	}
+
+	/*MENU*/
+
+	#menuheader {
+		top: 20%;
+		width: 75vh;
+	}
+	.mainMenu {
+	    top: 52%;
+	}
+	.mainMenu h1 {
+		font-size: 4vh;
+	}
+	.successMenu {
+		top: 45% !important;
+	}
+	.successMenu2 {
+		top: 62%;
+	}
+	#startGame {
+		top: 80%;
+		font-size: 4vh;
+	}
+	#countdown {
+		top: 78.5%;
+		font-size: 4vh;
+	}
+
+	/*MODULES (general)*/
+
+	.safe {
+		position: absolute;
+		left: 52.7%;
+		bottom: 0;
+		width: 93vh;
+		height: inherit;
+		transform: translate(-50%, 0%);
+	}
+
+	.mod {
+		top: 0.5vh;
+	}
+	#mod2, #mod3 {
+		top: 3vh;
+	}
+	#mod1, #mod3 {
+		left: 1.7vw;
+	}
+
+	/*Adjust outlet position*/
+	#outletWrap {
+		position: absolute;
+		height: 12.5vh;
+		width: 7.5vh;
+		left: -9vh;
+		top: 60vh;
+	}
+
+	/* Adjust LED size */
+	.modled img {
+		width: 3vh;
+	}
+
+	/* Adjust identifier text size */
+	#identifiers {
+	    top: 0.5vh;
+	    left: 0vw;
+	    font-size: 2.2vh;
+	    height: 100%;
+	    width: 100%;
+	}
+
+	#mainTimer {
+		font-size: 4vh;
+		line-height: 6vh;
+	}
+
+	#indicatorCode {
+		font-size: 2.5vh;
+		left: 25%;
+		top: 17%;
+		line-height: 3vh;
+	}
+
+	#bottomLED {
+		width: 2.2vh;
+	}
+
+	/*MODULES (specific)*/
+
+	/*keypad*/
+	.kbutton {
+		font-size: 3.5vh;
+		width: 32%
+	}
+
+	/*panic*/
+	.panicTimerBox {
+		top: 8%;
+		height: 24%;
+		width: 17%;
+	}
+	.panicTimer {
+		font-size: 2.2vh;
+	}
+	.panicBar {
+		top: 13%;
+	}
+	.commandText {
+		font-size: 3.5vh;
+		top: -1.5vw;
+	}
+	.buttontimer {
+		width: 10%;
+	}
+	.val {
+		font-size: 3vh;
+		width: 10% !important;
+	}
+
+	/*launchpad*/
+	.lbutton {
+		padding: 0 !important;
+	}
+
+
 }
