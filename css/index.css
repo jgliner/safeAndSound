@@ -710,7 +710,7 @@ button:active {
 	position: absolute;
 	content: "||||||||||||||||||||||||||||||||";
 	letter-spacing: -2px;
-	left: 40%;
+	left: 50%;
 	top: 0.5vh;
 	color: #BDBDBD;
 	transform: translate(-50%,0%);
@@ -1069,7 +1069,7 @@ button:active {
 
 	#mainTimer {
 		font-size: 4.6vw;
-		line-height: 7vh;
+		line-height: 9vw;
 	}
 
 	#indicatorCode {
@@ -1103,12 +1103,12 @@ button:active {
 	/*panic*/
 	.commandText {
 		font-size: 3vw;
-		top: -3vh;
+		top: 1.5vw;
 	}
 
 }
 
-@media (max-width: 455px) {
+@media (orientation: portrait) and (max-width: 455px) {
 
 	/* Adjust identifier text size for phones */
 	#identifiers {
@@ -1326,8 +1326,8 @@ button:active {
 		top: 13%;
 	}
 	.commandText {
-		font-size: 3.5vh;
-		top: -1.5vw;
+		font-size: 3vh;
+		top: 1vh;
 	}
 	.buttontimer {
 		width: 10%;

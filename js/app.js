@@ -13,6 +13,7 @@
 var strikes = 0;
 var correct = 0;
 var screenwidth = $(window).width();
+var screenheight = $(window).height();
 
 //-------------------------------------------------------
 //	GAME START
@@ -279,7 +280,7 @@ var panicSetup = function(serial, modNumber) {
 				self.counter = setInterval(function() {
 					
 					sec = parseInt(self.runningTimer/10%60);
-					newbar = newbar-0.2166666667;
+					newbar = newbar-0.19677419355;
 
 					modcode.find('.panicTimer').html(sec);
 					modcode.find('.panicBar').css('width', newbar+'%');
@@ -294,7 +295,7 @@ var panicSetup = function(serial, modNumber) {
 
 				}, 100);
 			}
-		}, 100000);
+		}, 10);
 
 		var resetTimer = function() {
 			console.log("resetting", "OLD FRQ COUNT: ", self.runningFrq)
@@ -345,11 +346,18 @@ var panicSetup = function(serial, modNumber) {
 		if (commandTextElement[0].scrollHeight > commandTextElementDefaultH) {
 
 			var fontpx = Number($('.commandText').css('font-size').slice(0,-2));
-			var fontvw = (((fontpx/width).toFixed(3))*100).toFixed(1);
+			var fontvw = (((fontpx/screenwidth).toFixed(3))*100).toFixed(1);
+			var fontvh = (((fontpx/screenheight).toFixed(3))*100).toFixed(1);
 
-			while (commandTextElement[0].scrollHeight > 55) {
-				fontSize -= 0.1;
-				commandTextElement.css('font-size', fontSize+"vw");
+			while (commandTextElement[0].scrollHeight > commandTextElementDefaultH) {
+				if (screenwidth <= screenheight) {
+					fontvw -= 0.1;
+					commandTextElement.css('font-size', fontvw+"vw");
+				}
+				else {
+					fontvh -= 0.1;
+					commandTextElement.css('font-size', fontvw+"vh");
+				}
 			}
 		}
 
