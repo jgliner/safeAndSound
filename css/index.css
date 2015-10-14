@@ -1103,7 +1103,7 @@ button:active {
 	/*panic*/
 	.commandText {
 		font-size: 3vw;
-		top: 1.5vw;
+		top: 1vh;
 	}
 
 }
@@ -1139,8 +1139,10 @@ button:active {
 
 	/* Outlet on top*/
 	#outletWrap {
-		left: 37vw;
-		top: -17.5vw;
+		left: 29vw;
+		top: -11.5vh;
+    	height: 14.5vh;
+    	width: 9.5vw;
 	}
 
 	/*MODULES (specific)*/
