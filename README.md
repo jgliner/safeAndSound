@@ -16,8 +16,6 @@ A cooperative game made in JS, based on Keep Talking and Nobody Explodes
 * Sounds
 * Landing page
 
-# Changelog
-
 ## v0.0.5 (2015-10-13)
 
 ##### Changes
