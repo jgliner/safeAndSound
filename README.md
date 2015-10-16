@@ -3,6 +3,21 @@ A cooperative game made in JS, based on Keep Talking and Nobody Explodes
 
 # Changelog
 
+## v0.0.6 (2015-10-15)
+
+##### Changes
+* Fixed a bug that caused an incorrect font to display
+* Fixed several display bugs that caused modules not to render properly on mobile devices
+* Implemented jQuery UI TouchPunch to enable slider on mobile
+* Ran a script that added missed CSS vendor prefixes and removed superfluous ones
+* Re-routed jQuery lib through cdnjs for uniformity
+
+##### Todo
+* Sounds
+* Landing page
+
+# Changelog
+
 ## v0.0.5 (2015-10-13)
 
 ##### Changes
