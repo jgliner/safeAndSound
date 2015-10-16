@@ -511,7 +511,7 @@ var wireSetup = function(serial, modNumber) {
 					guide.push( wireArrays[i][0] === 0 ? (wireArrays[i][1] === 0 ? (serial[7].match(/[^AEIOU24680]/g) ? "Y" : "N" ) : (serial[7].match(/[^AEIOU24680]/g) ? "Y" : "N" )) : (wireArrays[i][1] === 0 ?  "N" : (serial[7].match(/[^AEIOU24680]/g) ? "Y" : "N" )));
 					break;
 				case 1:
-					guide.push( wireArrays[i][0] === 0 ? (wireArrays[i][1] === 0 ? (serial[7].match(/[^AEIOU24680]/g) ? "Y" : "N" ) : (serial[7].match(/[^AEIOU24680]/g) ? "Y" : "Y" )) : (wireArrays[i][1] === 0 ?  "Y" : (serial[7].match(/[^AEIOU24680]/g) ? "Y" : "N" )));
+					guide.push( wireArrays[i][0] === 0 ? (wireArrays[i][1] === 0 ? (serial[7].match(/[^AEIOU24680]/g) ? "Y" : "N" ) : (serial[7].match(/[^AEIOU24680]/g) ? "Y" : "N" )) : (wireArrays[i][1] === 0 ?  "Y" : (serial[7].match(/[^AEIOU24680]/g) ? "Y" : "N" )));
 					break;
 				default:
 					guide.push( wireArrays[i][0] === 0 ? (wireArrays[i][1] === 0 ? "Y" : "N") : (wireArrays[i][1] === 0 ?  "Y" : "N") );
@@ -780,7 +780,7 @@ function winner() {
 	var opensafeint = 0;
 	var opensafe = setInterval(function() {
 		switch(opensafeint) {
-			case 0: $('#mainTimer').text('AUTHORIZED').css('color', 'green'); break;
+			case 0: $('#mainTimer').text('AUTHORIZED').addClass('defusedTimer'); break;
 			case 1: $('.bomb').addClass('dooropen'); $('.mod').addClass('moddooropen'); $('#safeimg').attr('src', './images/safeopen.png'); break;
 			case 3:	
 				$('#menu').addClass('success').css('display','initial');

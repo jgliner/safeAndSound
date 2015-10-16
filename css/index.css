@@ -14,21 +14,21 @@
 }
 @font-face {
     font-family: "Pixel";
-    src: local(Minecraft), url('../fonts/minecraft.ttf') format('opentype');
+    src: local(Minecraft), url('../fonts/Minecraft.ttf') format('opentype');
 }
 
 /*----------- GENERAL BODY -------------*/
 
 html, body {
 	height: 100%;
+	overflow: hidden !important;
 }
 
 body {
 	background: url(../images/bg.jpg) no-repeat;
 	background-color: #808080;
 	background-size: 100vw 100vh;
-	overflow: hidden !important;
-	font-family: "Minecraft";
+	font-family: "Pixel" !important;
 	letter-spacing: 1.5px;
 }
 
@@ -69,7 +69,8 @@ button:active {
 	position: absolute;
 	left: 50%;
 	top: 33%;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 	width: 75vw;
 }
 
@@ -78,7 +79,8 @@ button:active {
 	position: absolute;
 	left: 50%;
 	top: 74%;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 	border: 5px solid white !important;
 	background: transparent !important;
 	color: white !important;
@@ -92,13 +94,21 @@ button:active {
 	color: #aaa !important;
 }
 .startmenu {
-	animation: pop 3.6s;
+	-webkit-animation: pop 3.6s;
+	        animation: pop 3.6s;
 }
 .gameover {
-	animation: pop 1s;
+	-webkit-animation: pop 1s;
+	        animation: pop 1s;
 }
 .gameoverwin {
-	animation: pop 7.5s;
+	-webkit-animation: pop 7.5s;
+	        animation: pop 7.5s;
+}
+@-webkit-keyframes pop{
+	0%{opacity: 0}
+	99%{opacity: 0}
+	100%{opacity: 1} 
 }
 @keyframes pop{
 	0%{opacity: 0}
@@ -112,32 +122,55 @@ button:active {
 	position: absolute;
 	left: 50%;
 	top: 55%;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 }
 .mainMenu h1 {
 	white-space: nowrap;
 	overflow: hidden;
 	width: 100%;
-	animation: type 1s steps(25, end);
+	-webkit-animation: type 1s steps(25, end);
+	        animation: type 1s steps(25, end);
 	font-size: 3.5vw;
+}
+@-webkit-keyframes type{
+  	from {width: 0;}
 }
 @keyframes type{
   	from {width: 0;}
 }
 .mainMenu h1:nth-child(2) {
-	animation: type2 2s steps(33, end);
+	-webkit-animation: type2 2s steps(33, end);
+	        animation: type2 2s steps(33, end);
 }
 .mainMenu h1:nth-child(4) {
-	animation: type3 3.5s steps(40, end);
+	-webkit-animation: type3 3.5s steps(40, end);
+	        animation: type3 3.5s steps(40, end);
+}
+@-webkit-keyframes type2{
+	0%{width: 0;}
+	50%{width: 0;}
+	100%{ width: 100; } 
 }
 @keyframes type2{
 	0%{width: 0;}
 	50%{width: 0;}
 	100%{ width: 100; } 
 }
+@-webkit-keyframes type3{
+	0%{width: 0;}
+	60%{width: 0;}
+	100%{ width: 100; } 
+}
 @keyframes type3{
 	0%{width: 0;}
 	60%{width: 0;}
+	100%{ width: 100; } 
+}
+
+@-webkit-keyframes type4{
+	0%{width: 0;}
+	70%{width: 0;}
 	100%{ width: 100; } 
 }
 
@@ -153,37 +186,43 @@ button:active {
 	position: absolute;
 	left: 50%;
 	top: 49%;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 }
 .successMenu2 {
 	position: absolute;
 	left: 50%;
 	top: 62%;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 }
 
 .successMenu h1 {
 	white-space: nowrap;
 	overflow: hidden;
 	width: 100%;
-	animation: type 1s steps(15, end);
+	-webkit-animation: type 1s steps(15, end);
+	        animation: type 1s steps(15, end);
 	font-size: 3.5vw;
 }
 
 .successMenu h1:nth-child(2) {
-	animation: type2 3s steps(30, end);
+	-webkit-animation: type2 3s steps(30, end);
+	        animation: type2 3s steps(30, end);
 }
 
 .successMenu2 h1 {
 	white-space: nowrap;
 	overflow: hidden;
 	width: 100%;
-	animation: type4 5s steps(23, end);
+	-webkit-animation: type4 5s steps(23, end);
+	        animation: type4 5s steps(23, end);
 	font-size: 3.5vw;
 }
 
 .successMenu2 h1:nth-child(2) {
-	animation: pop 6s;
+	-webkit-animation: pop 6s;
+	        animation: pop 6s;
 }
 
 /*STATE SPECIFIC MENU ELEMENTS*/
@@ -197,14 +236,16 @@ button:active {
 	position: absolute;
 	top: 72.8%;
 	left: 50%;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 	width: 100%;
 	font-size: 3.5vw;
 }
 
 .flash {
 	background-color: red;
-	animation: blink 0.5s infinite;
+	-webkit-animation: blink 0.5s infinite;
+	        animation: blink 0.5s infinite;
 }
 
 #explode {
@@ -243,7 +284,8 @@ button:active {
 	background-color: green;
 }
 .dooropen {
-    transform: translate(-50%, -50%) perspective(1172px) rotateX(1deg) rotateY(19deg) rotateZ(-1.5deg) skewY(-1deg) skewX(-1deg) !important;
+    -webkit-transform: translate(-50%, -50%) perspective(1172px) rotateX(1deg) rotateY(19deg) rotateZ(-1.5deg) skewY(-1deg) skewX(-1deg) !important;
+            transform: translate(-50%, -50%) perspective(1172px) rotateX(1deg) rotateY(19deg) rotateZ(-1.5deg) skewY(-1deg) skewX(-1deg) !important;
     left: 60%!important;
     width: 58%!important;
     height: 71%!important;
@@ -267,7 +309,12 @@ button:active {
 }
 
 .blinker {
-	animation: blink 0.5s infinite;
+	-webkit-animation: blink 0.5s infinite;
+	        animation: blink 0.5s infinite;
+}
+@-webkit-keyframes blink { 
+	0% { opacity: 1}
+	50% {opacity: 0}
 }
 @keyframes blink { 
 	0% { opacity: 1}
@@ -275,6 +322,10 @@ button:active {
 }
 
 /*SCENERY*/
+
+#siren, #sign, #pipe1, #pipe2 {
+	overflow: hidden;
+}
 
 #siren {
 	position: absolute;
@@ -305,7 +356,8 @@ button:active {
 	bottom: 0;
 	width: 82vw;
 	height: auto;
-	transform: translate(-50%, 0%);
+	-webkit-transform: translate(-50%, 0%);
+	        transform: translate(-50%, 0%);
 }
 #safeimg {
 	position: relative;
@@ -317,7 +369,8 @@ button:active {
 	position: absolute;
 	left: 50.5%;
 	top: 52.6%;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 	width: 80%;
 	height: 69%;
 	z-index: 99999999999;
@@ -331,7 +384,8 @@ button:active {
 	height: 10%;
 	top: 4.7%;
 	left: 8%;
-	transform: skewX(17deg);
+	-webkit-transform: skewX(17deg);
+	        transform: skewX(17deg);
 }
 
 #idwrap {
@@ -359,14 +413,19 @@ button:active {
 	top: 45%;
 	background-color: black;
 	color: red;
-	transform: translate(0%, -50%);
+	-webkit-transform: translate(0%, -50%);
+	        transform: translate(0%, -50%);
 	text-align: center;
+}
+.defusedTimer {
+	color: green !important;
 }
 #identifiers {
 	position: relative;
 	top: 6%;
 	font-size: 1.9vw;
-	transform: skewX(-15deg);
+	-webkit-transform: skewX(-15deg);
+	        transform: skewX(-15deg);
 }
 #bombname {
 	font-weight: bold;
@@ -458,7 +517,8 @@ button:active {
 	top: 49%;
 	left: -1.9%;
 	text-align: center;
-	transform: rotate(270deg) skewX(-20deg);
+	-webkit-transform: rotate(270deg) skewX(-20deg);
+	        transform: rotate(270deg) skewX(-20deg);
 	display: inline-block;
 }
 #bottomLED {
@@ -548,7 +608,9 @@ button:active {
 	font-size: 3vw;
 	background: url(../images/button.png) no-repeat center/100% 100%;
 	white-space: normal;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+	padding: 0;
 }
 
 #button0 {
@@ -603,7 +665,8 @@ button:active {
 	background: url(../images/button.png) no-repeat center/cover;
 	left: 99%;
 	top: 16.5%;
-	transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
 	z-index: 99999999
 
 }
@@ -713,7 +776,8 @@ button:active {
 	left: 50%;
 	top: 0.5vh;
 	color: #BDBDBD;
-	transform: translate(-50%,0%);
+	-webkit-transform: translate(-50%,0%);
+	        transform: translate(-50%,0%);
 }
 
 /*SIMPLE WIRES*/
@@ -783,7 +847,14 @@ button:active {
 }
 
 .on {
-  animation: on 1s infinite;
+  -webkit-animation: on 1s infinite;
+          animation: on 1s infinite;
+}
+
+@-webkit-keyframes on { 
+	0% { background-color: #808080 }
+	50% { background-color: #999 }
+	100% { background-color: #808080 }
 }
 
 @keyframes on { 
@@ -909,17 +980,18 @@ button:active {
 	height: 25%;
 	position: relative;
 	background: url(../images/button.png) no-repeat center/100% 100%;
-	-webkit-transition: all 0.2s linear;
-    -moz-transition: all 0.2s linear;
-    -o-transition: all 0.2s linear;
-    -ms-transition: all 0.2s linear;
-    transition: all 0.2s linear;
+ transition: all 0.2s linear;
     border: 3px outset buttonface !important;
 }
 
 .blink:before {
 	content: '';
-	animation: pulse 0.5s infinite;
+	-webkit-animation: pulse 0.5s infinite;
+	        animation: pulse 0.5s infinite;
+}
+
+@-webkit-keyframes pulse { 
+	50% { background-color: grey; }
 }
 
 @keyframes pulse { 
@@ -935,10 +1007,6 @@ button:active {
     left: 0;
     top: 0;
     opacity: 0.5;
-    -webkit-transition: all 0.2s linear;
-    -moz-transition: all 0.2s linear;
-    -o-transition: all 0.2s linear;
-    -ms-transition: all 0.2s linear;
     transition: all 0.2s linear;
 }
 .B:before {
@@ -950,10 +1018,6 @@ button:active {
     left: 0;
     top: 0;
     opacity: 0.5;
-    -webkit-transition: all 0.2s linear;
-    -moz-transition: all 0.2s linear;
-    -o-transition: all 0.2s linear;
-    -ms-transition: all 0.2s linear;
     transition: all 0.2s linear;
 }
 .Y:before {
@@ -965,10 +1029,6 @@ button:active {
     left: 0;
     top: 0;
     opacity: 0.8;
-    -webkit-transition: all 0.2s linear;
-    -moz-transition: all 0.2s linear;
-    -o-transition: all 0.2s linear;
-    -ms-transition: all 0.2s linear;
     transition: all 0.2s linear;
 }
 .G:before {
@@ -980,10 +1040,6 @@ button:active {
     left: 0;
     top: 0;
     opacity: 0.5;
-    -webkit-transition: all 0.2s linear;
-    -moz-transition: all 0.2s linear;
-    -o-transition: all 0.2s linear;
-    -ms-transition: all 0.2s linear;
     transition: all 0.2s linear;
 }
 .W:before {
@@ -995,67 +1051,79 @@ button:active {
     left: 0;
     top: 0;
     opacity: 0.1;
-    -webkit-transition: all 0.2s linear;
-    -moz-transition: all 0.2s linear;
-    -o-transition: all 0.2s linear;
-    -ms-transition: all 0.2s linear;
     transition: all 0.2s linear;
 }
 .W {
 	-webkit-filter: brightness(1.5);
   	filter: brightness(1.5);
-  	-webkit-transition: all 0.2s linear;
-    -moz-transition: all 0.2s linear;
-    -o-transition: all 0.2s linear;
-    -ms-transition: all 0.2s linear;
-    transition: all 0.2s linear;
+   transition: all 0.2s linear;
 }
 
 /*----------- RESPONSIVE (PORTRAIT) -------------*/
 
 @media (orientation: portrait) and (max-width: 768px) {
 
+	/* Menu */
+	#startGame {
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+
 	/*SCENERY*/
 
-	#siren {
-		position: absolute;
-		top: -40vh;
-		left: -49vw;
-	}
 	#pipe1 {
 		position: absolute;
 		left: 28vw;
+		width: 31vw;
 	}
 	#pipe2 {
 		position: absolute;
 		left: 45vw;
+		width: 31vw;
 	}
 
 	/* Remove scenery to make room for the safe */
+
+	#siren {
+		display: none;
+	}
 	#sign {
 		display: none;
 	}
 
 	/* Adjust the safe to take up the full width */
+	.container-fluid {
+		position: absolute;
+	    overflow: hidden;
+	    width: 100%;
+	    height: 100%;
+	}
+
 	.safe {
 		position: absolute;
 		left: 52.7%;
 		bottom: 0;
 		width: 109vw;
 		height: 91vh;
-		transform: translate(-50%, 0%);
+		-webkit-transform: translate(-50%, 0%);
+		        transform: translate(-50%, 0%);
 		max-height: 800px;
 		max-width: 910px;
+		overflow: hidden;
+	}
+	#safeimg {
+		overflow: hidden;
 	}
 
 	/* Outlet on top*/
 	#outletWrap {
-		position: absolute;
-		height: 22.5vw;
-		width: 11.5vw;
-		left: 29vw;
-		top: -15.5vw;
-		transform: rotate(90deg);
+	    position: absolute;
+		left: 21vw;
+		top: 0.5vh;
+    	height: 17.5vw;
+    	width: 9.5vw;
+	    -webkit-transform: rotate(90deg);
+	            transform: rotate(90deg);
 	}
 
 	/* Adjust identifier text size */
@@ -1106,20 +1174,49 @@ button:active {
 		top: 1vh;
 	}
 
+	/*launchpad*/
+	.lbutton, .lbuttonOn {
+		padding: 0 !important;
+	}
+
+	#explode {
+		position: absolute;
+	}
+
 }
 
 @media (orientation: portrait) and (max-width: 455px) {
+
+	/* Adjust parent components for mobile Safari */
+	_::-webkit-:not(:root:root),.safe {
+		height: 81vh;
+	}
+
+	_::-webkit-:not(:root:root),#menuheader {
+		top: 23%;
+	}
+	_::-webkit-:not(:root:root),#menuText {
+		top: 45%;
+	}
+	_::-webkit-:not(:root:root),#startGame {
+		top: 64%;
+	}
+	_::-webkit-:not(:root:root),#countdown {
+		top: 61%;
+	}
 
 	/* Adjust identifier text size for phones */
 	#identifiers {
 		top: 1vh;
 		line-height: 3vh;
+		font-size: 2.5vw;
 	}
 	#serial {
 		font-size: 3.5vw;
 	}
 	#mainTimer {
 		font-size: 5.6vw;
+		line-height: 10vw;
 	}
 
 	/* Adjust correct module light size (pseudoselector) */
@@ -1131,18 +1228,18 @@ button:active {
 
 }
 
-@media (max-width: 455px) and (max-aspect-ratio: 2/3) {
-
-	html, body {
-		background: blue !important;
-	}
+@media (max-width: 455px) and (device-aspect-ratio: 2/3), (device-aspect-ratio: 9/16), (device-aspect-ratio: 375/667)  {
 
 	/* Outlet on top*/
 	#outletWrap {
-		left: 29vw;
-		top: -11.5vh;
-    	height: 14.5vh;
+		left: 21vw;
+		top: 0.5vh;
+    	height: 17.5vw;
     	width: 9.5vw;
+	}
+
+	.defusedTimer {
+		font-size: 4.6vw !important;
 	}
 
 	/*MODULES (specific)*/
@@ -1151,6 +1248,15 @@ button:active {
 	.kbutton {
 		font-size: 3vh;
 		width: 32%
+	}
+
+	/*complex wires*/
+	.confirm {
+		width: 5vw;
+		height: 5.5vw;
+		top: 17.5%;
+		margin: 0;
+		padding: 0;
 	}
 
 	/*panic*/
@@ -1165,14 +1271,14 @@ button:active {
 	}
 	.commandText {
 		font-size: 3.5vw;
-		top: -1.5vh;
+		top: 0.5vh;
 	}
 	.buttontimer {
 		width: 15%;
 	}
 	.val {
-		font-size: 4vw;
-    	line-height: 4.5vh;
+		font-size: 3.5vw;
+    	line-height: 4.2vh;
 		width: 15% !important;
 	}
 
@@ -1183,9 +1289,6 @@ button:active {
 	    width: 89%;
 	    left: 6%;
 	    top: 12%;
-	}
-	.lbutton {
-		padding: 0 !important;
 	}
 
 
@@ -1255,7 +1358,8 @@ button:active {
 		bottom: 0;
 		width: 93vh;
 		height: inherit;
-		transform: translate(-50%, 0%);
+		-webkit-transform: translate(-50%, 0%);
+		        transform: translate(-50%, 0%);
 	}
 
 	.mod {
@@ -1273,8 +1377,8 @@ button:active {
 		position: absolute;
 		height: 12.5vh;
 		width: 7.5vh;
-		left: -9vh;
-		top: 60vh;
+		left: 3vh;
+		top: 86vh;
 	}
 
 	/* Adjust LED size */
@@ -1329,7 +1433,7 @@ button:active {
 	}
 	.commandText {
 		font-size: 3vh;
-		top: 1vh;
+		top: 0vh;
 	}
 	.buttontimer {
 		width: 10%;
