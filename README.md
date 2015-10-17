@@ -3,6 +3,15 @@ A cooperative game made in JS, based on Keep Talking and Nobody Explodes
 
 # Changelog
 
+## v0.0.7 (2015-10-16)
+
+##### Changes
+* Added sound (will remove if too taxing)
+
+##### Todo
+* Landing page
+* Improve code legibility
+
 ## v0.0.6 (2015-10-15)
 
 ##### Changes
