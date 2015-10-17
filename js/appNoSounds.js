@@ -14,18 +14,11 @@ var strikes = 0;
 var correct = 0;
 var screenwidth = $(window).width();
 var screenheight = $(window).height();
-var playAudio = function(wav) {
-	if (!(/iPhone|iPad|iPod|Android|webOS|BlackBerry|Opera Mini|IEMobile/i.test(navigator.userAgent))) {
-		var sound = new Audio(wav);
-		return sound.play();
-	}
-};
+var mobilecheck = (/iPhone|iPad|iPod|Android|webOS|BlackBerry|Opera Mini|IEMobile/i.test(navigator.userAgent));
 
 //-------------------------------------------------------
 //	GAME START
 //-------------------------------------------------------
-
-playAudio('./soundfx/type.wav');
 
 function gameTimerOn() {
 	var time = 18000,
@@ -51,26 +44,22 @@ function gameTimerOn() {
 };
 
 $('.startmenu').click(function() {
-	$('.startmenu').addClass('invis');
-	$('#countdown').removeClass('invis');
-	var tminus = 3;
-	$('#countdown').append('Mission Begins in '+tminus+'... ');
-	playAudio('./soundfx/blip.wav');
-	var gamestart = setInterval(function() {
-		tminus--
-		$('#countdown').append(''+tminus+'... ');
-		if (tminus > 0) {
-			playAudio('./soundfx/blip.wav')
-		}
-		else {
-			$('#menu').fadeOut(function() {
-				$(this).removeClass('start');
-				$('#menuheader').attr('src', '');
-			});
-			clearInterval(gamestart);
-			playAudio('./soundfx/blipdone.wav');
-			gameTimerOn();
-		}
+
+$('.startmenu').addClass('invis');
+$('#countdown').removeClass('invis');
+var tminus = 3;
+$('#countdown').append('Mission Begins in '+tminus+'... ');
+var gamestart = setInterval(function() {
+	tminus--
+	$('#countdown').append(''+tminus+'... ');
+	if (tminus === 0) {
+		$('#menu').fadeOut(function() {
+			$(this).removeClass('start');
+			$('#menuheader').attr('src', '');
+		});
+		clearInterval(gamestart);
+		gameTimerOn();
+	}
 }, 1000)
 
 console.time("All of it");
@@ -288,7 +277,6 @@ var panicSetup = function(serial, modNumber) {
 				correct--;
 				console.log(correct);
 				self.placeCommand(modcode);
-				playAudio('./soundfx/type.wav');
 
 				self.counter = setInterval(function() {
 					
@@ -302,7 +290,7 @@ var panicSetup = function(serial, modNumber) {
 
 					if (self.runningTimer === 0) {
 						strikes === 2 ? ($('.panicTimer').html('__'), $('.commandText').html('<br>--------'), kablooey() ) :
-						( strikes++, playAudio('./soundfx/x.wav'), $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), console.log("NOPE! STRIKES: ", strikes) )
+						( strikes++, $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), console.log("NOPE! STRIKES: ", strikes) )
 						resetTimer();
 					}
 
@@ -332,7 +320,7 @@ var panicSetup = function(serial, modNumber) {
 			e.preventDefault();
 			resetTimer();
 			var sliderVal = modcode.find('.ui-slider').slider('option', 'value')
-			sliderVal === answers[modNumber] ? ( console.log("Phew.") ) : (strikes++, playAudio('./soundfx/x.wav'), $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? ($('.panicTimer').html('__'), $('.commandText').html('<br>--------'), kablooey() ) : console.log("NOPE! STRIKES: ", strikes)) )
+			sliderVal === answers[modNumber] ? ( console.log("Phew.") ) : (strikes++, $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? ($('.panicTimer').html('__'), $('.commandText').html('<br>--------'), kablooey() ) : console.log("NOPE! STRIKES: ", strikes)) )
 		});
 	}
 
@@ -652,7 +640,7 @@ $('.indivWiresS').on("click", function(e) {
 	var clickedMod = ($(this).closest('.mod').attr('id')[3]),
 	guide = Number(answers[clickedMod]),
 	x = Number($(this).attr('id')[4]);
-	x === guide ? ($(this).append('<div class="cutS"></div>'), $(this).closest('.mod').find('.modled').addClass('correct'), playAudio('./soundfx/correctMod.wav'), correct++, ( correct === 4 ? winner() : console.log("SUCCESS!", "CORRECT: ", correct+"/4")) )  : (strikes++, playAudio('./soundfx/x.wav'), $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)));
+	x === guide ? ($(this).append('<div class="cutS"></div>'), $(this).closest('.mod').find('.modled').addClass('correct'), correct++, ( correct === 4 ? winner() : console.log("SUCCESS!", "CORRECT: ", correct+"/4")) )  : (strikes++, $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)));
 });
 
 // COMPLEX WIRES
@@ -667,21 +655,20 @@ $('.indivWires').on("click", function(e) {
 	postcheck;
 	console.log(guidecheck, guide);
 	if (guidecheck > -1) {
-		outcome === 'N' ? (strikes++, playAudio('./soundfx/x.wav'), $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)) )
+		outcome === 'N' ? (strikes++, $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)) )
 		: ($(this).addClass('cut'), guide[x[x.length-1]] = "-"), console.log(guide);
 		postcheck = guide.indexOf("Y");
-		postcheck === -1 ? ($(this).closest('.mod').find('.modled').addClass('correct'), playAudio('./soundfx/correctMod.wav'), correct++, ( correct === 4 ? winner() : console.log("SUCCESS!", "CORRECT: ", correct+"/4")), $(this).off(), $(this).closest('.wireWrap').find('.confirm').off()) : false;
+		postcheck === -1 ? ($(this).closest('.mod').find('.modled').addClass('correct'), correct++, ( correct === 4 ? winner() : console.log("SUCCESS!", "CORRECT: ", correct+"/4")), $(this).off(), $(this).closest('.wireWrap').find('.confirm').off()) : false;
 	}
 	else {
 		$(this).closest('.mod').find('.modled').addClass('correct');
-		playAudio('./soundfx/correctMod.wav');
 		console.log("SUCCESS!");
 	}
 });
 $('.confirm').on("click", function(e) {
 	e.preventDefault();
 	var guide = answers[($(this).closest('.mod').attr('id')[3])];
-	guide.indexOf('Y') === -1 ? ($(this).closest('.mod').find('.modled').addClass('correct'), playAudio('./soundfx/correctMod.wav'), correct++, ( correct === 4 ? winner() : console.log("SUCCESS!", "CORRECT: ", correct+"/4")) ) : (strikes++, playAudio('./soundfx/x.wav'), $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)));
+	guide.indexOf('Y') === -1 ? ($(this).closest('.mod').find('.modled').addClass('correct'), correct++, ( correct === 4 ? winner() : console.log("SUCCESS!", "CORRECT: ", correct+"/4")) ) : (strikes++,$('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)));
 })
 
 // KEYPAD
@@ -696,7 +683,6 @@ $('.kbutton').on("click", function(e) {
 		console.log(bclicked);
 		if (bclicked[bclicked.length-1] != guide[bclicked.length-1]) {
 			strikes++;
-			playAudio('./soundfx/x.wav');
 			$('.strikes').html("STRIKES: " + strikes);
 			strikes === 3 ? kablooey() : ( $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), console.log("NOPE!", "strikes", strikes, bclicked),
 			bclicked.splice(-1,1),
@@ -712,7 +698,6 @@ $('.kbutton').on("click", function(e) {
 		if (bclicked[bclicked.length-1] != guide[bclicked.length-1]) {
 			console.log("SERIOUSLY!?!");
 			strikes++;
-			playAudio('./soundfx/x.wav');
 			$('.strikes').html("STRIKES: " + strikes);
 			$(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100);
 			bclicked.splice(-1,1);
@@ -723,7 +708,6 @@ $('.kbutton').on("click", function(e) {
 			console.log("SUCCESS!", "CORRECT: ", correct+"/4");
 			$(this).addClass('correctKeypad');
 			$(this).closest('.mod').find('.modled').addClass('correct');
-			playAudio('./soundfx/correctMod.wav');
 			$(this).off("click");
 			if (correct === 4) { winner(); }
 		}
@@ -764,7 +748,6 @@ $(".launchpad").on("click", ".lbuttonOn", function(e) {
 		correct++; 
 		console.log("SUCCESS!", "CORRECT: ", correct+"/4");
 		$(this).closest('.mod').find('.modled').addClass('correct');
-		playAudio('./soundfx/correctMod.wav');
 		$(this).off("click");
 		if (correct === 4) { winner(); }
 	}
@@ -797,10 +780,9 @@ function winner() {
 	var opensafeint = 0;
 	var opensafe = setInterval(function() {
 		switch(opensafeint) {
-			case 0: playAudio('./soundfx/accessGranted.wav'); $('#mainTimer').text('AUTHORIZED').addClass('defusedTimer'); break;
-			case 1: $('.bomb').addClass('dooropen'); playAudio('./soundfx/hit.wav'); $('.mod').addClass('moddooropen'); $('#safeimg').attr('src', './images/safeopen.png'); break;
+			case 0: $('#mainTimer').text('AUTHORIZED').addClass('defusedTimer'); break;
+			case 1: $('.bomb').addClass('dooropen'); $('.mod').addClass('moddooropen'); $('#safeimg').attr('src', './images/safeopen.png'); break;
 			case 3:	
-				playAudio('./soundfx/victory.wav')
 				$('#menu').addClass('success').css('display','initial');
 				$('#menuheader').attr('src', './images/successtext.png');
 				$('#menuText').addClass('successMenu').html('<h1>Excellent work.</h1><h1>You outsmarted the Commando 8.</h1><br></div>').after('<div class="successMenu2"><h1>You could even say.....</h1><h1>You blew us all away.</h1></div>');
@@ -824,11 +806,10 @@ function kablooey() {
 	var explodeint = 0;
 	var explode = setInterval(function() {
 		switch(explodeint) {
-			case 0: $('#menu').removeClass('flash'); $('#explode').css('display', 'block'); $('#inner').css('opacity', 1); playAudio('./soundfx/hit.wav'); break;
-			case 1: $('#mid').css('opacity', 1); playAudio('./soundfx/hit.wav'); break;
-			case 2: $('#outer').css('opacity', 1); playAudio('./soundfx/hit.wav'); break;
+			case 0: $('#menu').removeClass('flash'); $('#explode').css('display', 'block'); $('#inner').css('opacity', 1); break;
+			case 1: $('#mid').css('opacity', 1); break;
+			case 2: $('#outer').css('opacity', 1); break;
 			case 3:	
-				playAudio('./soundfx/failure.wav')
 				$('#menu').addClass('failure');
 				$('#menuheader').attr('src', './images/failuretext.png');
 				$('#explode').css('display', 'none');
