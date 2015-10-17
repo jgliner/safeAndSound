@@ -113,14 +113,14 @@ var countLimits = function(arr, limit) {
 // Use: checks if there are no more than one occurrance (allowedLimit) of two of wires that are the same color
 var multiLimits = function(arr, limit, allowedLimit) {
 	var obj = countLimits(arr, limit),
-	allowed = 0;
-	if (obj.length > 1) {
-		for (key in obj) {
+	reachedLimit = 0;
+	if (Object.keys(obj).length > 1) {
+		for (var key in obj) {
 			if (obj[key] === limit) {
-			allowed+= 1;
+			reachedLimit+= 1;
 			}
 		}
-		return allowed > allowedLimit ? false: true;
+		return reachedLimit > allowedLimit ? false: true;
 	}
 	return false;
 }
@@ -233,7 +233,7 @@ var panicSetup = function(serial, modNumber) {
 
 	this.place = function(modNumber) {
 		var modcode = $("#mod" + modNumber);
-		modcode.addClass('panicOff');
+		modcode.find('.modled').addClass('panicOff');
 		modcode.prepend('<div class="panic"></div>');
 		modcode.find('.panic').prepend('<div class="panicModule"><div class="panicTimerBox"><div class="panicTimer"></div></div><div class="panicBar"></div><button class=buttontimer></button><div class="commandBox"><div class="commandText"></div></div><div class="panicslider"></div><input class="val" readonly></input></div>');
 		$(function() {
@@ -272,7 +272,7 @@ var panicSetup = function(serial, modNumber) {
 
 			if (self.runningFrq === 0) {
 
-				modcode.addClass('on');
+				modcode.find('.modled').toggleClass('on panicOff');
 				correct--;
 				console.log(correct);
 				self.placeCommand(modcode);
@@ -303,7 +303,7 @@ var panicSetup = function(serial, modNumber) {
 			modcode.find('.panicBar').css('width', "61%");
 			modcode.find('.panicTimer').html('__');
 			modcode.find('.commandText').html('<br>--------').removeAttr('style');
-			modcode.removeClass('on');
+			modcode.find('.modled').toggleClass('on panicOff');
 
 			clearInterval(self.counter);
 
@@ -397,7 +397,7 @@ var simpleWireSetup = function(serial, modNumber) {
 		modcode.find('.wires').prepend('<div class="simpleWireWrap"></div>')
 		modcode.find('.simpleWireWrap').append('<div class="indivWireContS"></div>');
 
-		var simpleWireCount = specificRand(3,6)
+		var simpleWireCount = specificRand(3,6),
 		wireColors = ['black', '#095AD9', '#34681D', '#8F0202', 'white'],
 		wireArrays = [];
 		for (var i = 0; i < simpleWireCount; i++) { //CHANGE HERE FOR TESTING
@@ -433,8 +433,7 @@ var simpleWireSetup = function(serial, modNumber) {
 				else if (wireArrays[3] === 3) { guide = 0; break; }
 				else if (countTarget(wireArrays, 4) !== 0 && countTarget(wireArrays, 1) > countTarget(wireArrays, 4) ) { guide = 3; break; }
 				else if (countTarget(wireArrays, 1) === 2 || countTarget(wireArrays, 3) === 2 || countTarget(wireArrays, 4) === 2) {
-					countTarget(wireArrays, 2) === 1 ? guide = wireArrays.indexOf(2) : guide = 2;
-					break;
+					countTarget(wireArrays, 2) === 1 ? guide = wireArrays.indexOf(2) : guide = 2; break;
 				}
 				else {guide = 1; break;}
 
@@ -591,7 +590,6 @@ optHolder = {hold0: [], hold1: [], hold2: [], hold3: []};
 (function initAll() {
 	var i, chosenmod;
 	for (i = 0; i < 4; i++) {
-
 		answers.indexOf('panicWaiting') === -1 ? (chosenmod = specificRand(0,4), console.log('panic not placed yet')) : (chosenmod = specificRand(0,3), console.log('already here'));
 
 		switch (chosenmod) {
@@ -641,7 +639,7 @@ $('.indivWiresS').on("click", function(e) {
 	var clickedMod = ($(this).closest('.mod').attr('id')[3]),
 	guide = Number(answers[clickedMod]),
 	x = Number($(this).attr('id')[4]);
-	x === guide ? ($(this).addClass('cutS'), $(this).closest('.mod').find('.modled').addClass('correct'), correct++, ( correct === 4 ? winner() : console.log("SUCCESS!", "CORRECT: ", correct+"/4")) )  : (strikes++, $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)));
+	x === guide ? ($(this).append('<div class="cutS"></div>'), $(this).closest('.mod').find('.modled').addClass('correct'), correct++, ( correct === 4 ? winner() : console.log("SUCCESS!", "CORRECT: ", correct+"/4")) )  : (strikes++, $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)));
 });
 
 // COMPLEX WIRES
@@ -774,7 +772,8 @@ $(window).on('keydown', function(e) {
 function winner() {
 	console.log("A WINRAR IS YOU");
 	everythingOff();
-	$(".commandText, .panicTimer").css('color', 'green');
+	$(".commandText, .panicTimer, .val").css('color', 'green');
+	$(".panicBar").css({'background-color': 'green', 'border': '3px solid #03A603'});
 	$('.lbutton, .lbuttonOn').removeClass('W B Y G blink noblink').addClass('G');
 
 	var opensafeint = 0;
@@ -823,7 +822,7 @@ function kablooey() {
 }
 
 function everythingOff() {
-	$(".mod").removeClass('on').removeClass('panicOff');
+	$(".mod").find('.modled').removeClass('panicOff');
 	$("a").off();
 	$("button, .launchpad").off();
 	$(".commandText").html('<br>--------');

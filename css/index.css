@@ -828,6 +828,16 @@ button:active {
 	bottom: 0;
 	top: 100%;
 }
+.cutS:after {
+	position: absolute;
+	content: "||||||||||||||||||||||||||||||||";
+	letter-spacing: -2px;
+	left: 50%;
+	top: 50%;
+	color: #BDBDBD;
+	-webkit-transform: translate(-50%,0%) rotate(90deg);
+	        transform: translate(-50%,0%) rotate(90deg);
+}
 
 /*PANIC MODULE*/
 
@@ -842,25 +852,62 @@ button:active {
 	height: 100%;
 }
 
-.panicOff {
-  background: none !important;
+.panicOff:after {
+  	content: '';
+    position: absolute;
+    height: 87.5%;
+    width: 73%;
+    border-top-left-radius: 82%;
+    border-top-right-radius: 82%;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    left: 15%;
+    opacity: 0.7;
+    border-bottom: 3px solid grey;
+    top: 0.07vh;
+    -webkit-animation: panicOff 2s infinite;
+    animation: panicOff 2s infinite;
 }
 
-.on {
-  -webkit-animation: on 1s infinite;
-          animation: on 1s infinite;
+@-webkit-keyframes panicOff { 
+	0% { background-color: #808080; box-shadow: 0px 0px 0px grey; border: 3px solid grey; }
+	50% { background-color: #19A719; box-shadow: 0px -2px 10px green; border: 3px solid #158915;}
+	100% { background-color: #808080; box-shadow: 0px 0px 0px grey; border: 3px solid grey; }
+}
+
+@keyframes panicOff { 
+	0% { background-color: #808080; box-shadow: 0px 0px 0px grey; border: 3px solid grey; }
+	50% { background-color: #19A719; box-shadow: 0px -2px 10px green; border: 3px solid #158915;}
+	100% { background-color: #808080; box-shadow: 0px 0px 0px grey; border: 3px solid grey; }
+}
+
+.on:after {
+	content: '';
+    position: absolute;
+    height: 87.5%;
+    width: 73%;
+    border-top-left-radius: 82%;
+    border-top-right-radius: 82%;
+    border-bottom-left-radius: 10%;
+    border-bottom-right-radius: 10%;
+    left: 15%;
+    opacity: 0.7;
+    border-bottom: 3px solid grey;
+    top: 0.07vh;
+    -webkit-animation: on 0.3s infinite;
+    animation: on 0.3s infinite;
 }
 
 @-webkit-keyframes on { 
-	0% { background-color: #808080 }
-	50% { background-color: #999 }
-	100% { background-color: #808080 }
+	0% { background-color: #808080; box-shadow: 0px 0px 0px grey; border: 3px solid grey; }
+	50% { background-color: red; box-shadow: 0px -2px 10px red; border: 3px solid #E00000;}
+	100% { background-color: #808080; box-shadow: 0px 0px 0px grey; border: 3px solid grey; }
 }
 
 @keyframes on { 
-	0% { background-color: #808080 }
-	50% { background-color: #999 }
-	100% { background-color: #808080 }
+	0% { background-color: #808080; box-shadow: 0px 0px 0px grey; border: 3px solid grey; }
+	50% { background-color: red; box-shadow: 0px -2px 10px red; border: 3px solid #E00000;}
+	100% { background-color: #808080; box-shadow: 0px 0px 0px grey; border: 3px solid grey; }
 }
 
 .panicTimerBox {
