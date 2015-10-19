@@ -92,8 +92,8 @@ var keypadColumns = {
 
 var panicWords = {
 	commandPrefix: [["Alpha","Eligible","Hypo-","Master","Secret","Super-"],["Bravo","Flub-","i-","Mechanical","Secu-","Uber-"],["Crypto-","Garbage","Illegible","Oopsie","Spy"],["Delta","Geopolitical","Invisible","Peta-","Yoooo"],["Draxon","Glaxon","Java-","Quark","Umm"],["Electric","Hydro-","Left Hand","Right Hand","Uh Oh,"],["Electro-","Hyper-","Locking","Schwifty","Uhh"]],
-	commandSuffix: ["Agent","Bearfold","Bit","Bite","Bot","Boy","Bypass","Byte","Crystal","Dispersal Unit","Dryer","Enigma","Freud","Goose","Groose","Hacker","Jabroni","Key","Link","Man","Matic","Mixer","Pannel","Port","Reactor","Servo","Slide","Slot","Solwafter","Sponge","Thing","Touchdown","Tray","Trigger","Tumbler","Unit","Zorp"],
-	commandStatus: ["Failing","Error","Access",": Permission Denied","Messed Up","On the Fritz","Loose","Not Working","at Critical Mass","Needs Tinkering","Check","Shot","Breakdown","Drained","Needs Greasing","Unsafe","Released","Overheating","is Not Feeling Well","Stopped","Malfunction","Falling","Slacking","Deflated","Needs Rebooting","Unauthorized","Incorrect","Evacuated","Defective","Reset","Combination","Code","FUBAR'd","Override","Locked","No, Wait...","Mixed Up"]
+	commandSuffix: ["Agent","Bearfold","Bit","Bite","Bot","Bro","Bypass","Byte","Crystal","Dispersal Unit","Dryer","Enigma","Freud","Goose","Groose","Hacker","Jabroni","Key","Link","Man","Matic","Mixer","Pannel","Port","Reactor","Servo","Slide","Slot","Solwafter","Sponge","Thing","Touchdown","Tray","Trigger","Tumbler","Unit","Zorp"],
+	commandStatus: ["Failing","Error","Access",": Permission Denied","Messed Up","On the Fritz","Loose","Not Working","at Critical Mass","Needs Tinkering","Check","Compromised","Breakdown","Drained","Needs Greasing","Unsafe","Released","Overheating","is Not Feeling Well","Stopped","Malfunction","Falling","Slacking","Deflated","Needs Rebooting","Unauthorized","Incorrect","Evacuated","Defective","Reset","Combination","Code","FUBAR'd","Override","Locked","No, Wait...","Mixed Up"]
 };
 
 var launchpadFormations = [["R","W","W","B","W","R","B","W","W","B","R","W","B","W","W","R"],["B","Y","Y","B","W","R","Y","W","Y","Y","Y","Y","Y","Y","Y","W"],["B","B","B","W","W","B","B","B","W","B","Y","B","R","W","R","W"],["G","R","W","W","W","G","B","W","G","G","G","G","W","R","R","G"],["R","W","W","R","W","Y","Y","W","W","R","R","W","W","W","W","W"],["W","R","B","R","W","W","R","W","W","W","B","W","R","B","R","W"],["W","W","W","W","G","Y","G","W","Y","R","Y","W","G","Y","G","W"],["B","W","W","B","W","W","W","W","R","R","R","R","B","R","R","B"],["W","W","G","W","Y","W","W","Y","W","W","G","W","W","G","W","Y"],["W","W","Y","Y","R","Y","Y","B","W","Y","B","W","W","W","Y","W"],["W","Y","Y","W","R","Y","Y","R","W","G","G","W","Y","W","W","Y"],["R","R","G","G","R","G","R","G","R","G","G","G","R","R","R","G"],["R","W","W","R","W","G","G","G","W","G","Y","G","R","G","G","G"],["G","R","R","R","G","B","B","R","G","B","B","Y","G","Y","Y","Y"],["B","B","R","R","B","B","W","W","R","R","R","R","W","W","W","W"]]; 
@@ -329,10 +329,12 @@ var panicSetup = function(serial, modNumber) {
 		}
 
 		modcode.find('.buttontimer').on("click", function(e) {
-			e.preventDefault();
-			resetTimer();
-			var sliderVal = modcode.find('.ui-slider').slider('option', 'value')
-			sliderVal === answers[modNumber] ? ( console.log("Phew.") ) : (strikes++, playAudio('./soundfx/x.wav'), $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? ($('.panicTimer').html('__'), $('.commandText').html('<br>--------'), kablooey() ) : console.log("NOPE! STRIKES: ", strikes)) )
+			if (modcode.find('.modled').hasClass('on')) {
+				e.preventDefault();
+				resetTimer();
+				var sliderVal = modcode.find('.ui-slider').slider('option', 'value')
+				sliderVal === answers[modNumber] ? ( playAudio('./soundfx/correctMod.wav'), ( correct === 4 ? winner() : (console.log("Phew.")) ) ) : (strikes++, playAudio('./soundfx/x.wav'), $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? ($('.panicTimer').html('__'), $('.commandText').html('<br>--------'), kablooey() ) : console.log("NOPE! STRIKES: ", strikes)) )
+			}
 		});
 	}
 
@@ -603,6 +605,7 @@ optHolder = {hold0: [], hold1: [], hold2: [], hold3: []};
 (function initAll() {
 	var i, chosenmod;
 	for (i = 0; i < 4; i++) {
+		
 		answers.indexOf('panicWaiting') === -1 ? (chosenmod = specificRand(0,4), console.log('panic not placed yet')) : (chosenmod = specificRand(0,3), console.log('already here'));
 
 		switch (chosenmod) {
@@ -636,7 +639,7 @@ optHolder = {hold0: [], hold1: [], hold2: [], hold3: []};
 				break;
 		}
 	};
-	console.log("CURRENT MODULES: ", spaces, "ANSWERS: ", answers, "HOLDER: ", optHolder);
+	console.log("CURRENT MODULES: \n\n\n", spaces, "\n\nANSWERS: ", answers, "\n\nHOLDER: ", optHolder, "\n\nPOINTS: ", correct);
 }());
 	
 
@@ -666,17 +669,10 @@ $('.indivWires').on("click", function(e) {
 	guidecheck = guide.indexOf("Y"),
 	postcheck;
 	console.log(guidecheck, guide);
-	if (guidecheck > -1) {
-		outcome === 'N' ? (strikes++, playAudio('./soundfx/x.wav'), $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)) )
-		: ($(this).addClass('cut'), guide[x[x.length-1]] = "-"), console.log(guide);
-		postcheck = guide.indexOf("Y");
-		postcheck === -1 ? ($(this).closest('.mod').find('.modled').addClass('correct'), playAudio('./soundfx/correctMod.wav'), correct++, ( correct === 4 ? winner() : console.log("SUCCESS!", "CORRECT: ", correct+"/4")), $(this).off(), $(this).closest('.wireWrap').find('.confirm').off()) : false;
-	}
-	else {
-		$(this).closest('.mod').find('.modled').addClass('correct');
-		playAudio('./soundfx/correctMod.wav');
-		console.log("SUCCESS!");
-	}
+	outcome === 'N' ? (strikes++, playAudio('./soundfx/x.wav'), $('.strikes').html("STRIKES: " + strikes), $(".strikebuzzer").fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log("NOPE! STRIKES: ", strikes)) )
+	: ($(this).addClass('cut'), guide[x[x.length-1]] = "-"), console.log(guide);
+	postcheck = guide.indexOf("Y");
+	postcheck === -1 && guide.indexOf('-') > -1 ? ($(this).closest('.mod').find('.modled').addClass('correct'), playAudio('./soundfx/correctMod.wav'), correct++, ( correct === 4 ? winner() : console.log("SUCCESS!", "CORRECT: ", correct+"/4")), $(this).off(), $(this).closest('.wireWrap').find('.confirm').off()) : false;
 });
 $('.confirm').on("click", function(e) {
 	e.preventDefault();

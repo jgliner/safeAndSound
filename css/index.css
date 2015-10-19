@@ -1108,7 +1108,7 @@ button:active {
 
 /*----------- RESPONSIVE (PORTRAIT) -------------*/
 
-@media (orientation: portrait) and (max-width: 768px) {
+@media (orientation: portrait) {
 
 	/* Menu */
 	#startGame {
