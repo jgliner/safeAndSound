@@ -1370,6 +1370,10 @@ button:active {
 		width: 36vh;
 	}
 
+	#explode {
+		position: absolute;
+	}
+
 	/*MENU*/
 
 	#menuheader {
