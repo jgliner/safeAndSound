@@ -1,6 +1,6 @@
 <p align="center"><img src="/images/landing/githubtitle.png" /></p>
 
-<p align="center">A cooperative game made entirely in JS
+<p align="center">A cooperative game made entirely in JS<br>
 Based on the game <a href="http://www.keeptalkinggame.com/">Keep Talking and Nobody Explodes</a><br><br>
 </p>
 
