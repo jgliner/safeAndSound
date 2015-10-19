@@ -1,8 +1,23 @@
 <p align="center"><img src="/images/landing/githubtitle.png" /></p>
 
 <p align="center">A cooperative game made entirely in JS<br>
-Based on the game [Keep Talking and Nobody Explodes](http://www.keeptalkinggame.com/)
+Based on the game <a href="http://www.keeptalkinggame.com/">Keep Talking and Nobody Explodes</a>
 </p>
+
+<p align="center"><img src="/images/landing/mission.png" /></p>
+
+<p align="center"><i>Two Unqualified Secret Agents...<br>One Exploding Safe...<br>Millions of Possible Arrangements...<br>What Could Possibly Go Wrong?<br><br></i></p>
+
+
+Listen up, agents, you two have been hand-selected for this top-priority mission because you're the best we'v... ugh, who am I kidding? Let me try again. You have been... let's just say "chosen"... for this mission. Never mind the fact that 
+all of our other agents aggressively turned it down.
+
+Your assignment will be to obtain enemy inteligence locked securely inside of a Commando 8™ Brand safe. Fair warning: the Commando 8™ has somewhat of a reputation among the Agency for being, err... "high-stakes". Namely, if you don't crack it open within the time limit, it'll explode. Violently.
+
+Now, I know that both of you you don't have any field experience, so let me explain how this works. Only one of you can be looking at, and therefore disarming the safe, since some Commando 8™ models have retina scanners that will cause the safe to detonate if two pairs of eyes are looking at it. The other must be on another computer or mobile device looking at the Commando 8™ Owner's Manual, which you can find by **pressing the button below**. You will need to work together and communicate clearly in order to make it out alive. Good luck, agents.<br><br>
+
+
+[<img src="/images/landing/manualbutton.png">](#)
 
 # Changelog
 
