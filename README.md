@@ -1,5 +1,8 @@
-# "safeAndSound" by Jarrett Gliner
-A cooperative game made in JS, based on Keep Talking and Nobody Explodes
+<p align="center"><img src="/images/landing/githubtitle.png" /></p>
+
+<p align="center">A cooperative game made entirely in JS<br>
+Based on the game [Keep Talking and Nobody Explodes](http://www.keeptalkinggame.com/)
+</p>
 
 # Changelog
 
