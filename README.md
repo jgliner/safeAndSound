@@ -25,7 +25,15 @@ Now, I know that both of you you don't have any field experience, so let me expl
 
 # Changelog
 
-## v0.0.7 (2015-10-16)
+### v0.0.8 (2015-10-18)
+
+##### Changes
+* Landing page
+
+##### Todo
+* Improve code legibility
+
+### v0.0.7 (2015-10-16)
 
 ##### Changes
 * Added sound (will remove if too taxing)
@@ -34,7 +42,7 @@ Now, I know that both of you you don't have any field experience, so let me expl
 * Landing page
 * Improve code legibility
 
-## v0.0.6 (2015-10-15)
+### v0.0.6 (2015-10-15)
 
 ##### Changes
 * Fixed a bug that caused an incorrect font to display
@@ -47,7 +55,7 @@ Now, I know that both of you you don't have any field experience, so let me expl
 * Sounds
 * Landing page
 
-## v0.0.5 (2015-10-13)
+### v0.0.5 (2015-10-13)
 
 ##### Changes
 * Display fixes to accommodate all screen sizes
@@ -56,7 +64,7 @@ Now, I know that both of you you don't have any field experience, so let me expl
 * Sounds
 * Landing page
 
-## v0.0.4 (2015-10-12)
+### v0.0.4 (2015-10-12)
 
 ##### Changes
 * Added success triggers, changed the green background to a green LED upon successfully solving a given module
@@ -68,7 +76,7 @@ Now, I know that both of you you don't have any field experience, so let me expl
 * Sounds
 * Landing page
 
-## v0.0.3 (2015-10-11)
+### v0.0.3 (2015-10-11)
 
 ##### Changes
 * Added failure animation sequences
@@ -81,7 +89,7 @@ Now, I know that both of you you don't have any field experience, so let me expl
 * Sounds
 * Landing page
 
-## v0.0.2 (2015-10-11)
+### v0.0.2 (2015-10-11)
 
 ##### Changes
 * Added start menu
@@ -96,7 +104,7 @@ Now, I know that both of you you don't have any field experience, so let me expl
 * Landing page
 
 
-## v0.0.1 (2015-10-10)
+### v0.0.1 (2015-10-10)
 
 ##### Changes
 * Initial Alpha
@@ -107,3 +115,22 @@ Now, I know that both of you you don't have any field experience, so let me expl
 * Display fixes for mobile
 * Sounds
 * Landing page
+
+---
+
+### Fun Facts and References
+
+* The Commando 8™ was named after a state-of-the-art Air Conditioner featured in the Seinfeld Episode: "The Parking Garage"
+* The word "Schwifty", which may pop up in the Panic Module, is a reference to the Rick and Morty Episode: "Get Schwifty"
+* The symbols on the keypad module include Darth Vader, Batman, the album art from Pink Floyd's "Dark Side of the Moon", the Triforce from the Legend of Zelda Series, and the Deathly Hallows symbol from Harry Potter.
+
+### Attributions
+
+Everything not created by me is listed below and is licensed under Creative Commons (CC BY)
+
+* Skip - "HyperSpaceAdventure" (Mission Accomplished Screen)
+* Visager - "Title Theme" (Mission Failure Screen)
+
+<br>
+* Game font: "Minecraft" by Pwnage_Block
+* Keypad Glyph font: "Webhostingfont Glyphs" by Webhostinghub.com
