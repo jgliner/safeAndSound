@@ -1,8 +1,10 @@
 <p align="center"><img src="/images/landing/githubtitle.png" /></p>
 
-<p align="center">A cooperative game made entirely in JS<br>
-Based on the game <a href="http://www.keeptalkinggame.com/">Keep Talking and Nobody Explodes</a>
+<p align="center">A cooperative game made entirely in JS
+Based on the game <a href="http://www.keeptalkinggame.com/">Keep Talking and Nobody Explodes</a><br><br>
 </p>
+
+---
 
 <p align="center"><img src="/images/landing/mission.png" /></p>
 
@@ -17,7 +19,9 @@ Your assignment will be to obtain enemy inteligence locked securely inside of a 
 Now, I know that both of you you don't have any field experience, so let me explain how this works. Only one of you can be looking at, and therefore disarming the safe, since some Commando 8™ models have retina scanners that will cause the safe to detonate if two pairs of eyes are looking at it. The other must be on another computer or mobile device looking at the Commando 8™ Owner's Manual, which you can find by **pressing the button below**. You will need to work together and communicate clearly in order to make it out alive. Good luck, agents.<br><br>
 
 
-[<img src="/images/landing/manualbutton.png">](#)
+[<p align="center"><img src="/images/landing/manualbutton.png"></p>](#)
+
+---
 
 # Changelog
 
