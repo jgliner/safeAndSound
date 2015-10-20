@@ -614,7 +614,7 @@ var SimpleWires = function() {
 
 				if (countTarget(wireArrays, 2) > 2) { guide = 4; break; }
 				else if (wireArrays.indexOf(0) === -1 && wireArrays.indexOf(2) === -1) { outlet === 'usa' ? guide = 0 : guide = 5; break; }
-				else if (arrConsecutive(wireArrays) >= 3) { indicator[0] === indicator[1] && indicator[1] === indicator[2] ? guide = 3 : guide = 2; break; }
+				else if (arrConsecutive(wireArrays) >= 3) { indicator[0] === indicator[1] && indicator[1] === indicator[2] ? guide = 3 : guide = 1; break; }
 				else if (countTarget(wireArrays, 4) === 1 || countTarget(wireArrays, 0) === 1) { guide = 2; break;}
 				else {guide = 0; break;}
 
@@ -746,6 +746,7 @@ optHolder = {hold0: [], hold1: [], hold2: [], hold3: []}; // Holder for click ev
 	for (i = 0; i < 4; i++) {
 		// Random number to decide which module gets placed
 		// Only one Panic Module can be placed, or else the game would be too hectic (maybe I'll make a hard mode later :D)
+
 		answers.indexOf('panicWaiting') === -1 ? (chosenmod = specificRand(0,4), console.log('panic not placed yet')) : (chosenmod = specificRand(0,3), console.log('already here'));
 
 		switch (chosenmod) {
@@ -830,7 +831,7 @@ $('.confirm').on('click', function(e) {
 	e.preventDefault();
 	var guide = answers[($(this).closest('.mod').attr('id')[3])];
 	// i.e., If everything is "N", consider the module complete and check for win
-	guide.indexOf('Y') === -1 ? (($(this).closest('.mod').find('.indivWiresS').off()), $(this).closest('.mod').find('.modled').addClass('correct'), playAudio('./soundfx/correctMod.wav'), correct++, ( correct === 4 ? winner() : console.log('SUCCESS!', 'CORRECT: ', correct+'/4')) ) : (strikes++, playAudio('./soundfx/x.wav'), $('.strikes').html('STRIKES: ' + strikes), $('.strikebuzzer').fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log('NOPE! STRIKES: ', strikes)));
+	guide.indexOf('Y') === -1 ? (($(this).closest('.mod').find('.indivWires, .confirm').off()), $(this).closest('.mod').find('.modled').addClass('correct'), playAudio('./soundfx/correctMod.wav'), correct++, ( correct === 4 ? winner() : console.log('SUCCESS!', 'CORRECT: ', correct+'/4')) ) : (strikes++, playAudio('./soundfx/x.wav'), $('.strikes').html('STRIKES: ' + strikes), $('.strikebuzzer').fadeIn(100).fadeOut(100).fadeIn(100).fadeOut(100), (strikes === 3 ? kablooey() : console.log('NOPE! STRIKES: ', strikes)));
 });
 
 // KEYPAD
