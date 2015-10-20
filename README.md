@@ -25,6 +25,15 @@ Now, I know that both of you you don't have any field experience, so let me expl
 
 # Changelog
 
+### v0.0.9 (2015-10-19)
+
+##### Changes
+* Major code legibility, style, and efficiency fixes
+* Comments throughout
+
+##### Todo
+* Minor efficiency tweaks
+
 ### v0.0.8 (2015-10-18)
 
 ##### Changes
